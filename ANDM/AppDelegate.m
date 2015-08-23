@@ -27,6 +27,8 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
+//    [PFUser logOut];
+
     return YES;
 }
 
