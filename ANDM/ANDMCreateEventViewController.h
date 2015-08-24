@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  ANDMCreateEventViewController.h
 //  ANDM
 //
 //  Created by Jonathan Kim on 8/23/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+@interface ANDMCreateEventViewController : UIViewController
 
 @end

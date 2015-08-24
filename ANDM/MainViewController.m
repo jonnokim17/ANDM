@@ -1,12 +1,12 @@
 //
-//  RootViewController.m
+//  MainViewController.m
 //  ANDM
 //
 //  Created by Jonathan Kim on 8/23/15.
 //  Copyright © 2015 Jonathan Kim. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "MainViewController.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "ANDMLoginViewController.h"
@@ -15,24 +15,22 @@
 #import "SWRevealViewController.h"
 #import "Page.h"
 
-@interface RootViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) ANDMLoginViewController *ANDMLoginViewController;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *pagesArray;
+@property (nonatomic, strong) NSMutableArray *pagesArray;
 
 @end
 
-@implementation RootViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [Page getPagesWithCompletion:^(NSArray *pages, NSError *error) {
-        self.pagesArray = pages;
-    }];
+    self.pagesArray = [@[] mutableCopy];
 
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -41,6 +39,14 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+
+    [Page getPagesWithCompletion:^(NSArray *pages, NSError *error) {
+        [self.pagesArray addObjectsFromArray:pages];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -48,6 +54,11 @@
     [super viewDidAppear:animated];
 
     [self manageLogin];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)setPagesArray:(NSArray *)pagesArray
@@ -147,7 +158,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"mainCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
 
     Page *page = self.pagesArray[indexPath.row];
 

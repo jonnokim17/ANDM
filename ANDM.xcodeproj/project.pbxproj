@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		900052E71B8A3F27005367A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 900052E61B8A3F27005367A7 /* main.m */; };
 		900052EA1B8A3F27005367A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 900052E91B8A3F27005367A7 /* AppDelegate.m */; };
-		900052ED1B8A3F27005367A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 900052EC1B8A3F27005367A7 /* RootViewController.m */; };
 		900052F01B8A3F27005367A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900052EE1B8A3F27005367A7 /* Main.storyboard */; };
 		900052F21B8A3F27005367A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 900052F11B8A3F27005367A7 /* Images.xcassets */; };
 		900052F51B8A3F27005367A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900052F31B8A3F27005367A7 /* LaunchScreen.xib */; };
@@ -19,6 +18,9 @@
 		90625B6E1B8A4B8D0082AA7E /* ANDMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B6D1B8A4B8D0082AA7E /* ANDMSignUpViewController.m */; };
 		90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B731B8A55620082AA7E /* UIAlertController+Window.m */; };
 		90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B761B8A59DD0082AA7E /* SWRevealViewController.m */; };
+		90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */; };
+		90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC91B8A70EC009CDB18 /* Page.m */; };
+		90EA6CD01B8A89B5009CDB18 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CCF1B8A89B5009CDB18 /* MainViewController.m */; };
 		DC0A291405BA0A719B80CD1C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F068CD97485BF39114E87D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +42,6 @@
 		900052E61B8A3F27005367A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		900052E81B8A3F27005367A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		900052E91B8A3F27005367A7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		900052EB1B8A3F27005367A7 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		900052EC1B8A3F27005367A7 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		900052EF1B8A3F27005367A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		900052F11B8A3F27005367A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		900052F41B8A3F27005367A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +58,12 @@
 		90625B731B8A55620082AA7E /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Window.m"; sourceTree = "<group>"; };
 		90625B751B8A59DD0082AA7E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		90625B761B8A59DD0082AA7E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMCreateEventViewController.h; sourceTree = "<group>"; };
+		90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMCreateEventViewController.m; sourceTree = "<group>"; };
+		90EA6CC81B8A70EC009CDB18 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
+		90EA6CC91B8A70EC009CDB18 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
+		90EA6CCE1B8A89B5009CDB18 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		90EA6CCF1B8A89B5009CDB18 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E0F068CD97485BF39114E87D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,8 +180,10 @@
 				90625B761B8A59DD0082AA7E /* SWRevealViewController.m */,
 				903D716B1B8A5BBB004D1047 /* ANDMMenuViewController.h */,
 				903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */,
-				900052EB1B8A3F27005367A7 /* RootViewController.h */,
-				900052EC1B8A3F27005367A7 /* RootViewController.m */,
+				90EA6CCE1B8A89B5009CDB18 /* MainViewController.h */,
+				90EA6CCF1B8A89B5009CDB18 /* MainViewController.m */,
+				90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */,
+				90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */,
 				90625B681B8A4B5D0082AA7E /* Login/Signup VC */,
 			);
 			name = ViewController;
@@ -184,6 +192,8 @@
 		90625B671B8A4A820082AA7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				90EA6CC81B8A70EC009CDB18 /* Page.h */,
+				90EA6CC91B8A70EC009CDB18 /* Page.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -254,7 +264,7 @@
 		900052D91B8A3F27005367A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Jonathan Kim";
 				TargetAttributes = {
 					900052E01B8A3F27005367A7 = {
@@ -343,14 +353,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EA6CD01B8A89B5009CDB18 /* MainViewController.m in Sources */,
+				90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */,
 				90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */,
 				90625B6E1B8A4B8D0082AA7E /* ANDMSignUpViewController.m in Sources */,
 				90625B6B1B8A4B800082AA7E /* ANDMLoginViewController.m in Sources */,
 				90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */,
-				900052ED1B8A3F27005367A7 /* RootViewController.m in Sources */,
 				900052EA1B8A3F27005367A7 /* AppDelegate.m in Sources */,
 				900052E71B8A3F27005367A7 /* main.m in Sources */,
 				903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */,
+				90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +425,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -479,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ANDM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathanykim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -490,6 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ANDM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathanykim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -508,6 +523,7 @@
 				);
 				INFOPLIST_FILE = ANDMTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathanykim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ANDM.app/ANDM";
 			};
@@ -523,6 +539,7 @@
 				);
 				INFOPLIST_FILE = ANDMTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathanykim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ANDM.app/ANDM";
 			};
