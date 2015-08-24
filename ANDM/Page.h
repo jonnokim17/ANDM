@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *hashtag;
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString *pageName;
+@property (nonatomic, strong) PFFile *image;
 
 + (void)getPagesWithCompletion:(void(^)(NSArray *pages, NSError *error))completion;
 

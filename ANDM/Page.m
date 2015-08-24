@@ -15,6 +15,7 @@
 @dynamic hashtag;
 @dynamic location;
 @dynamic pageName;
+@dynamic image;
 
 + (void)load
 {

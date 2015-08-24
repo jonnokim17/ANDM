@@ -13,6 +13,8 @@
 		900052F21B8A3F27005367A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 900052F11B8A3F27005367A7 /* Images.xcassets */; };
 		900052F51B8A3F27005367A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900052F31B8A3F27005367A7 /* LaunchScreen.xib */; };
 		900053011B8A3F27005367A7 /* ANDMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 900053001B8A3F27005367A7 /* ANDMTests.m */; };
+		902B87131B8A9BB200E6F58E /* FeatureBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */; };
+		902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 902B87151B8AA0EC00E6F58E /* MainFeedTableViewCell.m */; };
 		903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */; };
 		90625B6B1B8A4B800082AA7E /* ANDMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B6A1B8A4B800082AA7E /* ANDMLoginViewController.m */; };
 		90625B6E1B8A4B8D0082AA7E /* ANDMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B6D1B8A4B8D0082AA7E /* ANDMSignUpViewController.m */; };
@@ -20,7 +22,6 @@
 		90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B761B8A59DD0082AA7E /* SWRevealViewController.m */; };
 		90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */; };
 		90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC91B8A70EC009CDB18 /* Page.m */; };
-		90EA6CD01B8A89B5009CDB18 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CCF1B8A89B5009CDB18 /* MainViewController.m */; };
 		DC0A291405BA0A719B80CD1C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F068CD97485BF39114E87D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,10 @@
 		900052FA1B8A3F27005367A7 /* ANDMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ANDMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		900052FF1B8A3F27005367A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900053001B8A3F27005367A7 /* ANDMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANDMTests.m; sourceTree = "<group>"; };
+		902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureBaseViewController.h; sourceTree = "<group>"; };
+		902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureBaseViewController.m; sourceTree = "<group>"; };
+		902B87141B8AA0EC00E6F58E /* MainFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFeedTableViewCell.h; sourceTree = "<group>"; };
+		902B87151B8AA0EC00E6F58E /* MainFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainFeedTableViewCell.m; sourceTree = "<group>"; };
 		903D716B1B8A5BBB004D1047 /* ANDMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMMenuViewController.h; sourceTree = "<group>"; };
 		903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMMenuViewController.m; sourceTree = "<group>"; };
 		90625B691B8A4B800082AA7E /* ANDMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMLoginViewController.h; sourceTree = "<group>"; };
@@ -62,8 +67,6 @@
 		90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMCreateEventViewController.m; sourceTree = "<group>"; };
 		90EA6CC81B8A70EC009CDB18 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
 		90EA6CC91B8A70EC009CDB18 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
-		90EA6CCE1B8A89B5009CDB18 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		90EA6CCF1B8A89B5009CDB18 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E0F068CD97485BF39114E87D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -169,6 +172,8 @@
 		903D716E1B8A614B004D1047 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				902B87141B8AA0EC00E6F58E /* MainFeedTableViewCell.h */,
+				902B87151B8AA0EC00E6F58E /* MainFeedTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -180,8 +185,8 @@
 				90625B761B8A59DD0082AA7E /* SWRevealViewController.m */,
 				903D716B1B8A5BBB004D1047 /* ANDMMenuViewController.h */,
 				903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */,
-				90EA6CCE1B8A89B5009CDB18 /* MainViewController.h */,
-				90EA6CCF1B8A89B5009CDB18 /* MainViewController.m */,
+				902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */,
+				902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */,
 				90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */,
 				90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */,
 				90625B681B8A4B5D0082AA7E /* Login/Signup VC */,
@@ -353,13 +358,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90EA6CD01B8A89B5009CDB18 /* MainViewController.m in Sources */,
+				902B87131B8A9BB200E6F58E /* FeatureBaseViewController.m in Sources */,
 				90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */,
 				90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */,
 				90625B6E1B8A4B8D0082AA7E /* ANDMSignUpViewController.m in Sources */,
 				90625B6B1B8A4B800082AA7E /* ANDMLoginViewController.m in Sources */,
 				90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */,
 				900052EA1B8A3F27005367A7 /* AppDelegate.m in Sources */,
+				902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */,
 				900052E71B8A3F27005367A7 /* main.m in Sources */,
 				903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */,
 				90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */,

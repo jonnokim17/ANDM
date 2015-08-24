@@ -1,36 +1,31 @@
 //
-//  MainViewController.m
+//  FeatureBaseViewController.m
 //  ANDM
 //
 //  Created by Jonathan Kim on 8/23/15.
 //  Copyright © 2015 Jonathan Kim. All rights reserved.
 //
 
-#import "MainViewController.h"
-#import <Parse/Parse.h>
-#import <ParseUI/ParseUI.h>
+#import "FeatureBaseViewController.h"
 #import "ANDMLoginViewController.h"
 #import "ANDMSignUpViewController.h"
 #import "UIAlertController+Window.h"
 #import "SWRevealViewController.h"
 #import "Page.h"
+#import "MainFeedTableViewCell.h"
 
-@interface MainViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) ANDMLoginViewController *ANDMLoginViewController;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) NSMutableArray *pagesArray;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end
 
-@implementation MainViewController
+@implementation FeatureBaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.pagesArray = [@[] mutableCopy];
 
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -39,14 +34,6 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-
-    [Page getPagesWithCompletion:^(NSArray *pages, NSError *error) {
-        [self.pagesArray addObjectsFromArray:pages];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-        });
-    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -61,12 +48,76 @@
     [super viewWillAppear:animated];
 }
 
-- (void)setPagesArray:(NSArray *)pagesArray
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+//- (id)initWithCoder:(NSCoder *)aCoder
+//{
+//    self = [super initWithCoder:aCoder];
+//    if (self) {
+//        // The className to query on
+//        self.parseClassName = @"Page";
+//
+//        // The key of the PFObject to display in the label of the default cell style
+//        self.textKey = @"pageName";
+//    }
+//    return self;
+//}
+
+- (id)initWithCoder:(NSCoder *)aCoder {
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // The className to query on
+        self.parseClassName = @"Page";
+
+        // The key of the PFObject to display in the label of the default cell style
+        self.textKey = @"pageName";
+
+        // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
+        self.imageKey = @"image";
+
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = YES;
+
+        // The number of objects to show per page
+        self.objectsPerPage = 25;
+    }
+    return self;
 }
+
+- (PFQuery *)queryForTable
+{
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+
+    return query;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
+{
+    static NSString *simpleTableIdentifier = @"cell";
+
+    MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[MainFeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+
+    // Configure the cell
+    NSString *eventName = [object objectForKey:@"pageName"];
+    cell.eventTitleLabel.text = eventName;
+
+    PFFile *eventImageFile = [object objectForKey:@"image"];
+    if (eventImageFile) {
+        cell.eventImage.file = eventImageFile;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.eventImage loadInBackground];
+        });
+    } else {
+        NSLog(@"ERROR");
+    }
+
+    return cell;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -148,23 +199,6 @@
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.pagesArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-
-    Page *page = self.pagesArray[indexPath.row];
-
-    cell.textLabel.text = page.pageName;
-
-    return cell;
 }
 
 #pragma mark - Helpers

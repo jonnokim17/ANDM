@@ -8,6 +8,7 @@
 
 #import "ANDMCreateEventViewController.h"
 #import "Page.h"
+#import "FeatureBaseViewController.h"
 
 @interface ANDMCreateEventViewController () <UITextFieldDelegate>
 
@@ -49,6 +50,13 @@
     page.pageName = self.eventTextField.text;
 
     [page saveInBackground];
+}
+- (IBAction)onCancel:(UIBarButtonItem *)sender
+{
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FeatureBaseViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"mainfeed"];
+
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end
