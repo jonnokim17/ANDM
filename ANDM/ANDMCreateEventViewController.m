@@ -48,6 +48,7 @@
 {
     Page *page = [Page objectWithClassName:@"Page"];
     page.pageName = self.eventTextField.text;
+    page.hashtag = self.hashtagTextField.text;
 
     [page saveInBackground];
 }

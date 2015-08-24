@@ -48,18 +48,7 @@
     [super viewWillAppear:animated];
 }
 
-//- (id)initWithCoder:(NSCoder *)aCoder
-//{
-//    self = [super initWithCoder:aCoder];
-//    if (self) {
-//        // The className to query on
-//        self.parseClassName = @"Page";
-//
-//        // The key of the PFObject to display in the label of the default cell style
-//        self.textKey = @"pageName";
-//    }
-//    return self;
-//}
+
 
 - (id)initWithCoder:(NSCoder *)aCoder {
     self = [super initWithCoder:aCoder];
@@ -114,6 +103,13 @@
     } else {
         NSLog(@"ERROR");
     }
+
+    NSString *hashtag = [object objectForKey:@"hashtag"];
+    NSMutableString *hashtagString = [NSMutableString stringWithString:hashtag];
+
+    [hashtagString insertString:@"#" atIndex:0];
+
+    cell.hashtagLabel.text = hashtagString;
 
     return cell;
 }

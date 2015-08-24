@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet PFImageView *eventImage;
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hashtagLabel;
 
 @end

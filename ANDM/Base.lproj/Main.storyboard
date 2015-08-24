@@ -242,14 +242,24 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="OBF-e0-JhD"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hashtag" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ze-SB-eY3">
+                                            <rect key="frame" x="16" y="113" width="568" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="i4b-cg-dwy" firstAttribute="top" secondItem="tsH-vc-9Pl" secondAttribute="topMargin" id="7NE-Zz-yEX"/>
+                                        <constraint firstItem="8Ze-SB-eY3" firstAttribute="centerX" secondItem="tsH-vc-9Pl" secondAttribute="centerX" id="CZi-fr-JBr"/>
+                                        <constraint firstItem="8Ze-SB-eY3" firstAttribute="top" secondItem="xSD-Lv-IGU" secondAttribute="bottom" constant="74" id="Ik5-YA-h2c"/>
                                         <constraint firstItem="i4b-cg-dwy" firstAttribute="centerY" secondItem="tsH-vc-9Pl" secondAttribute="centerY" id="NlI-Bt-yd1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8Ze-SB-eY3" secondAttribute="bottom" constant="7.5" id="Rym-Iu-Wzl"/>
+                                        <constraint firstItem="8Ze-SB-eY3" firstAttribute="leading" secondItem="tsH-vc-9Pl" secondAttribute="leadingMargin" constant="8" id="VvS-iz-556"/>
                                         <constraint firstItem="xSD-Lv-IGU" firstAttribute="trailing" secondItem="tsH-vc-9Pl" secondAttribute="trailingMargin" id="WKO-xl-yyv"/>
                                         <constraint firstItem="i4b-cg-dwy" firstAttribute="centerX" secondItem="tsH-vc-9Pl" secondAttribute="centerX" id="bvp-m4-SzM"/>
                                         <constraint firstItem="i4b-cg-dwy" firstAttribute="leading" secondItem="xSD-Lv-IGU" secondAttribute="leading" id="gt5-XB-id6"/>
@@ -260,6 +270,7 @@
                                 <connections>
                                     <outlet property="eventImage" destination="i4b-cg-dwy" id="8e9-eS-Cos"/>
                                     <outlet property="eventTitleLabel" destination="xSD-Lv-IGU" id="WFm-XJ-yOO"/>
+                                    <outlet property="hashtagLabel" destination="8Ze-SB-eY3" id="XeC-dm-Ar3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
