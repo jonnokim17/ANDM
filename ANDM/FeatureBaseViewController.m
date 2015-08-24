@@ -90,6 +90,8 @@
         cell = [[MainFeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
 
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     // Configure the cell
     NSString *eventName = [object objectForKey:@"pageName"];
     cell.eventTitleLabel.text = eventName;

@@ -115,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EVENT" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0va-IO-qDH">
-                                <rect key="frame" x="20" y="101" width="560" height="30"/>
+                                <rect key="frame" x="20" y="211" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -123,7 +123,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DATE" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lAM-Hl-JAy">
-                                <rect key="frame" x="20" y="151" width="560" height="30"/>
+                                <rect key="frame" x="20" y="261" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -131,12 +131,12 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="START TIME" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="On5-hC-PZn">
-                                <rect key="frame" x="20" y="201" width="560" height="30"/>
+                                <rect key="frame" x="20" y="311" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="END TIME" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="V32-Mf-KRr">
-                                <rect key="frame" x="20" y="251" width="560" height="30"/>
+                                <rect key="frame" x="20" y="361" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -144,7 +144,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LOCATION" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lzB-IN-LrV">
-                                <rect key="frame" x="20" y="301" width="560" height="30"/>
+                                <rect key="frame" x="20" y="411" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -152,7 +152,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HASHTAG" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Vl-hd-B2N">
-                                <rect key="frame" x="20" y="351" width="560" height="30"/>
+                                <rect key="frame" x="20" y="461" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -160,7 +160,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2W-Om-2ho">
-                                <rect key="frame" x="233" y="417" width="135" height="33"/>
+                                <rect key="frame" x="233" y="527" width="135" height="33"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="d6V-6N-TU9"/>
@@ -173,17 +173,39 @@
                                     <action selector="onCreateEvent:" destination="PLe-24-Sjv" eventType="touchUpInside" id="OFJ-Sb-sSP"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F7O-7t-Jmy">
+                                <rect key="frame" x="20" y="72" width="560" height="128"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlN-lf-tuF">
+                                <rect key="frame" x="279" y="112" width="42" height="42"/>
+                                <color key="backgroundColor" red="0.22352941179999999" green="0.31372549020000001" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="zYZ-pM-BN9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddImage:" destination="PLe-24-Sjv" eventType="touchUpInside" id="gDJ-55-SyZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="V32-Mf-KRr" secondAttribute="leading" id="0NN-Ry-eKG"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="6Vl-hd-B2N" secondAttribute="trailing" id="2z9-iU-QPu"/>
+                            <constraint firstItem="VlN-lf-tuF" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="48" id="3Uy-vr-9QJ"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="0va-IO-qDH" secondAttribute="leading" id="4ZG-0e-FHs"/>
+                            <constraint firstItem="0va-IO-qDH" firstAttribute="top" secondItem="F7O-7t-Jmy" secondAttribute="bottom" constant="11" id="7gM-MC-1sd"/>
+                            <constraint firstItem="F7O-7t-Jmy" firstAttribute="trailing" secondItem="0va-IO-qDH" secondAttribute="trailing" id="9ft-bi-hoW"/>
+                            <constraint firstItem="VlN-lf-tuF" firstAttribute="centerX" secondItem="sMf-Zk-vPe" secondAttribute="centerX" id="CHM-Lx-2GD"/>
                             <constraint firstItem="On5-hC-PZn" firstAttribute="top" secondItem="lAM-Hl-JAy" secondAttribute="bottom" constant="20" id="GHX-oy-OVW"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="0va-IO-qDH" secondAttribute="trailing" id="Iqh-Cj-gM6"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0va-IO-qDH" secondAttribute="leading" id="LKA-ri-ni3"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="V32-Mf-KRr" secondAttribute="trailing" id="Maq-Kp-AYA"/>
-                            <constraint firstItem="0va-IO-qDH" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="37" id="S2Y-7H-XtN"/>
+                            <constraint firstItem="F7O-7t-Jmy" firstAttribute="leading" secondItem="0va-IO-qDH" secondAttribute="leading" id="OZl-Qn-ADs"/>
+                            <constraint firstItem="0va-IO-qDH" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="147" id="S2Y-7H-XtN"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="lzB-IN-LrV" secondAttribute="leading" id="S7K-qO-SOd"/>
                             <constraint firstItem="n2W-Om-2ho" firstAttribute="top" secondItem="6Vl-hd-B2N" secondAttribute="bottom" constant="36" id="S7N-Ou-VN6"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="top" secondItem="0va-IO-qDH" secondAttribute="bottom" constant="20" id="WMD-fS-FfQ"/>
@@ -195,6 +217,7 @@
                             <constraint firstItem="V32-Mf-KRr" firstAttribute="top" secondItem="On5-hC-PZn" secondAttribute="bottom" constant="20" id="mq5-zh-gyl"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="6Vl-hd-B2N" secondAttribute="leading" id="n0u-pO-gIG"/>
                             <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="On5-hC-PZn" secondAttribute="leading" id="rxB-1y-UI7"/>
+                            <constraint firstItem="F7O-7t-Jmy" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="8" symbolic="YES" id="t2R-Eb-CZg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0va-IO-qDH" secondAttribute="trailing" id="xHQ-uY-19T"/>
                         </constraints>
                     </view>
@@ -208,8 +231,10 @@
                     <connections>
                         <outlet property="dateTextField" destination="lAM-Hl-JAy" id="J0I-sP-Ua3"/>
                         <outlet property="endTimeTextField" destination="V32-Mf-KRr" id="FHm-Ua-vjT"/>
+                        <outlet property="eventImageView" destination="F7O-7t-Jmy" id="CgQ-3l-oVH"/>
                         <outlet property="eventTextField" destination="0va-IO-qDH" id="wXL-X4-oKK"/>
                         <outlet property="hashtagTextField" destination="6Vl-hd-B2N" id="V2u-ku-Yn8"/>
+                        <outlet property="imageAddButton" destination="VlN-lf-tuF" id="myB-MZ-UAr"/>
                         <outlet property="locationTextField" destination="lzB-IN-LrV" id="00i-yN-1Pw"/>
                         <outlet property="startTimeTextField" destination="On5-hC-PZn" id="osh-wQ-lOX"/>
                     </connections>
@@ -231,7 +256,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ao-TF-tbb" id="tsH-vc-9Pl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4b-cg-dwy" customClass="PFImageView">

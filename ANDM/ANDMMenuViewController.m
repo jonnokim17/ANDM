@@ -48,6 +48,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     cell.textLabel.text = self.menuArray[indexPath.row];
 
     return cell;
@@ -62,30 +64,6 @@
         [self presentViewController:loginVC animated:YES completion:nil];
     }
 }
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"event"]) {
-//        UINavigationController *navVC = segue.destinationViewController;
-//        ANDMCreateEventViewController *createEventVC
-//    }
-//}
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//
-//    // Set the title of navigation bar by using the menu items
-//    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-//    destViewController.title = [[menuItems objectAtIndex:indexPath.row] capitalizedString];
-//
-//    // Set the photo if it navigates to the PhotoView
-//    if ([segue.identifier isEqualToString:@"showPhoto"]) {
-//        UINavigationController *navController = segue.destinationViewController;
-//        PhotoViewController *photoController = [navController childViewControllers].firstObject;
-//        NSString *photoFilename = [NSString stringWithFormat:@"%@_photo", [menuItems objectAtIndex:indexPath.row]];
-//        photoController.photoFilename = photoFilename;
-//    }
-//}
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
