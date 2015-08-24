@@ -129,7 +129,7 @@
         //Create the log in view controller
         ANDMLoginViewController *logInViewController = [[ANDMLoginViewController alloc] init];
         [logInViewController setDelegate:self];
-        [logInViewController setFields:PFLogInFieldsDefault |PFLogInFieldsDismissButton];
+        [logInViewController setFields:PFLogInFieldsDefault];
 
 
         //Create the sign up view controller

@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "ANDMLoginViewController.h"
 #import "ANDMCreateEventViewController.h"
+#import "SWRevealViewController.h"
 
 @interface ANDMMenuViewController () <UITableViewDataSource, UITableViewDelegate, PFLogInViewControllerDelegate>
 
@@ -23,6 +24,11 @@
     [super viewDidLoad];
 
     self.menuArray = @[@"profile", @"event", @"favorites", @"logout"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,6 +65,12 @@
 {
     if (indexPath.row == 3) {
         [PFUser logOut];
+
+        SWRevealViewController *revealViewController = self.revealViewController;
+        if (revealViewController) {
+            [revealViewController revealToggleAnimated:YES];
+        }
+
         ANDMLoginViewController *loginVC = [[ANDMLoginViewController alloc] init];
         [loginVC setDelegate:self];
         [self presentViewController:loginVC animated:YES completion:nil];

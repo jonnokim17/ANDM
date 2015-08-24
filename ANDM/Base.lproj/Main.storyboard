@@ -122,21 +122,13 @@
                                     <outlet property="delegate" destination="PLe-24-Sjv" id="zEy-lc-RSe"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DATE" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lAM-Hl-JAy">
-                                <rect key="frame" x="20" y="261" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="PLe-24-Sjv" id="Dff-aS-0ug"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="START TIME" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="On5-hC-PZn">
-                                <rect key="frame" x="20" y="311" width="560" height="30"/>
+                                <rect key="frame" x="20" y="261" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="END TIME" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="V32-Mf-KRr">
-                                <rect key="frame" x="20" y="361" width="560" height="30"/>
+                                <rect key="frame" x="20" y="311" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -144,7 +136,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LOCATION" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lzB-IN-LrV">
-                                <rect key="frame" x="20" y="411" width="560" height="30"/>
+                                <rect key="frame" x="20" y="361" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -152,27 +144,13 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HASHTAG" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Vl-hd-B2N">
-                                <rect key="frame" x="20" y="461" width="560" height="30"/>
+                                <rect key="frame" x="20" y="411" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="PLe-24-Sjv" id="D8N-B4-X0N"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2W-Om-2ho">
-                                <rect key="frame" x="233" y="527" width="135" height="33"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="d6V-6N-TU9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Create Event">
-                                    <color key="titleColor" red="0.97519935302299987" green="0.97369331791176716" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onCreateEvent:" destination="PLe-24-Sjv" eventType="touchUpInside" id="OFJ-Sb-sSP"/>
-                                </connections>
-                            </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F7O-7t-Jmy">
                                 <rect key="frame" x="20" y="72" width="560" height="128"/>
                             </imageView>
@@ -190,35 +168,46 @@
                                     <action selector="onAddImage:" destination="PLe-24-Sjv" eventType="touchUpInside" id="gDJ-55-SyZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2W-Om-2ho">
+                                <rect key="frame" x="233" y="465" width="135" height="33"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="d6V-6N-TU9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Create Event">
+                                    <color key="titleColor" red="0.97519935302299987" green="0.97369331791176716" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCreateEvent:" destination="PLe-24-Sjv" eventType="touchUpInside" id="OFJ-Sb-sSP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="V32-Mf-KRr" secondAttribute="leading" id="0NN-Ry-eKG"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="6Vl-hd-B2N" secondAttribute="trailing" id="2z9-iU-QPu"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="trailing" secondItem="lzB-IN-LrV" secondAttribute="trailing" id="0zG-D6-t66"/>
                             <constraint firstItem="VlN-lf-tuF" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="48" id="3Uy-vr-9QJ"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="0va-IO-qDH" secondAttribute="leading" id="4ZG-0e-FHs"/>
                             <constraint firstItem="0va-IO-qDH" firstAttribute="top" secondItem="F7O-7t-Jmy" secondAttribute="bottom" constant="11" id="7gM-MC-1sd"/>
                             <constraint firstItem="F7O-7t-Jmy" firstAttribute="trailing" secondItem="0va-IO-qDH" secondAttribute="trailing" id="9ft-bi-hoW"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="trailing" secondItem="0va-IO-qDH" secondAttribute="trailing" id="C3P-wD-1oT"/>
                             <constraint firstItem="VlN-lf-tuF" firstAttribute="centerX" secondItem="sMf-Zk-vPe" secondAttribute="centerX" id="CHM-Lx-2GD"/>
-                            <constraint firstItem="On5-hC-PZn" firstAttribute="top" secondItem="lAM-Hl-JAy" secondAttribute="bottom" constant="20" id="GHX-oy-OVW"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="0va-IO-qDH" secondAttribute="trailing" id="Iqh-Cj-gM6"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0va-IO-qDH" secondAttribute="leading" id="LKA-ri-ni3"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="V32-Mf-KRr" secondAttribute="trailing" id="Maq-Kp-AYA"/>
                             <constraint firstItem="F7O-7t-Jmy" firstAttribute="leading" secondItem="0va-IO-qDH" secondAttribute="leading" id="OZl-Qn-ADs"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="top" secondItem="0va-IO-qDH" secondAttribute="bottom" constant="20" id="PHu-oH-mVh"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="leading" secondItem="6Vl-hd-B2N" secondAttribute="leading" id="PeZ-Z0-N7s"/>
                             <constraint firstItem="0va-IO-qDH" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="147" id="S2Y-7H-XtN"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="lzB-IN-LrV" secondAttribute="leading" id="S7K-qO-SOd"/>
-                            <constraint firstItem="n2W-Om-2ho" firstAttribute="top" secondItem="6Vl-hd-B2N" secondAttribute="bottom" constant="36" id="S7N-Ou-VN6"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="top" secondItem="0va-IO-qDH" secondAttribute="bottom" constant="20" id="WMD-fS-FfQ"/>
+                            <constraint firstItem="n2W-Om-2ho" firstAttribute="top" secondItem="6Vl-hd-B2N" secondAttribute="bottom" constant="24" id="S7N-Ou-VN6"/>
                             <constraint firstItem="6Vl-hd-B2N" firstAttribute="top" secondItem="lzB-IN-LrV" secondAttribute="bottom" constant="20" id="WoE-d2-DmS"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="lzB-IN-LrV" secondAttribute="trailing" id="bXS-92-SK7"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="centerX" secondItem="n2W-Om-2ho" secondAttribute="centerX" id="baT-q5-qPH"/>
                             <constraint firstItem="lzB-IN-LrV" firstAttribute="top" secondItem="V32-Mf-KRr" secondAttribute="bottom" constant="20" id="cFR-bG-4Sw"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="trailing" secondItem="On5-hC-PZn" secondAttribute="trailing" id="eLn-vB-DF4"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="centerX" secondItem="n2W-Om-2ho" secondAttribute="centerX" id="kIO-BQ-ona"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="trailing" secondItem="6Vl-hd-B2N" secondAttribute="trailing" id="lbW-D8-xjq"/>
                             <constraint firstItem="V32-Mf-KRr" firstAttribute="top" secondItem="On5-hC-PZn" secondAttribute="bottom" constant="20" id="mq5-zh-gyl"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="6Vl-hd-B2N" secondAttribute="leading" id="n0u-pO-gIG"/>
-                            <constraint firstItem="lAM-Hl-JAy" firstAttribute="leading" secondItem="On5-hC-PZn" secondAttribute="leading" id="rxB-1y-UI7"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="leading" secondItem="lzB-IN-LrV" secondAttribute="leading" id="ooc-cC-fNz"/>
                             <constraint firstItem="F7O-7t-Jmy" firstAttribute="top" secondItem="8ux-ZQ-L5O" secondAttribute="bottom" constant="8" symbolic="YES" id="t2R-Eb-CZg"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="leading" secondItem="V32-Mf-KRr" secondAttribute="leading" id="ten-If-ceP"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="leading" secondItem="0va-IO-qDH" secondAttribute="leading" id="wsL-9W-EYO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0va-IO-qDH" secondAttribute="trailing" id="xHQ-uY-19T"/>
+                            <constraint firstItem="On5-hC-PZn" firstAttribute="trailing" secondItem="V32-Mf-KRr" secondAttribute="trailing" id="zWG-UR-o5j"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="lJa-NA-Lal">
@@ -229,7 +218,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateTextField" destination="lAM-Hl-JAy" id="J0I-sP-Ua3"/>
                         <outlet property="endTimeTextField" destination="V32-Mf-KRr" id="FHm-Ua-vjT"/>
                         <outlet property="eventImageView" destination="F7O-7t-Jmy" id="CgQ-3l-oVH"/>
                         <outlet property="eventTextField" destination="0va-IO-qDH" id="wXL-X4-oKK"/>
@@ -336,7 +324,7 @@
         <!--Navigation Controller-->
         <scene sceneID="sKH-Gn-XTh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MQf-F8-4BC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNav" automaticallyAdjustsScrollViewInsets="NO" id="MQf-F8-4BC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2yN-38-xxQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

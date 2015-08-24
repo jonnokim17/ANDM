@@ -13,7 +13,6 @@
 @interface ANDMCreateEventViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *eventTextField;
-@property (weak, nonatomic) IBOutlet UITextField *dateTextField;
 @property (weak, nonatomic) IBOutlet UITextField *startTimeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *endTimeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
@@ -24,6 +23,8 @@
 @property (strong, nonatomic) UIImage *selectedEventImage;
 @property (strong, nonatomic) PFFile *eventImageFile;
 
+@property (strong, nonatomic) FeatureBaseViewController *mainFeedVC;
+
 @end
 
 @implementation ANDMCreateEventViewController
@@ -31,6 +32,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.mainFeedVC = [storyboard instantiateViewControllerWithIdentifier:@"mainfeed"];
+
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    [datePicker setDate:[NSDate date]];
+    [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.startTimeTextField setInputView:datePicker];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self registerForKeyboardNotifications];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self deregisterFromKeyboardNotifications];
+    [super viewDidDisappear:animated];
+}
+
+-(void)updateTextField:(id)sender
+{
+    UIDatePicker *picker = (UIDatePicker*)self.startTimeTextField.inputView;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy hh:mm a"];
+    self.startTimeTextField.text = [dateFormat stringFromDate:picker.date];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,14 +84,16 @@
     page.hashtag = self.hashtagTextField.text;
     page.image = self.eventImageFile;
 
-    [page saveInBackground];
+    //TODO: fix this later...
+    if ([self.eventTextField.text length] > 0) {
+        [page saveInBackground];
+    }
+
+    [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
 - (IBAction)onCancel:(UIBarButtonItem *)sender
 {
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FeatureBaseViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"mainfeed"];
-
-    [self.navigationController pushViewController:controller animated:YES];
+    [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
 - (IBAction)onAddImage:(UIButton *)sender
 {
@@ -123,9 +153,7 @@
     {
         [alert addAction:takePhoto];
     }
-
     [alert addAction:cancel];
-
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -147,6 +175,57 @@
     self.eventImageView.image = self.selectedEventImage;
 
     [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)registerForKeyboardNotifications {
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+
+}
+
+- (void)deregisterFromKeyboardNotifications {
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGRect newFrame = self.view.frame;
+    newFrame.origin.y -= [self getKeyboardHeight:notification]/2;
+
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.view.frame = newFrame;
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    CGRect newFrame = self.view.frame;
+    newFrame.origin.y += [self getKeyboardHeight:notification]/2;
+
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.view.frame = newFrame;
+    }];
+}
+
+- (CGFloat)getKeyboardHeight:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    NSValue *keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey];
+
+    CGRect keyboardRect = [keyboardSize CGRectValue];
+    return keyboardRect.size.height;
+    
 }
 
 @end
