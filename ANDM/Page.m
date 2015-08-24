@@ -12,6 +12,7 @@
 
 @dynamic address;
 @dynamic date;
+@dynamic endDate;
 @dynamic hashtag;
 @dynamic location;
 @dynamic pageName;

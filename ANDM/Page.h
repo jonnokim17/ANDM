@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSString *hashtag;
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString *pageName;
