@@ -36,7 +36,6 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.eventImageView.image = image;
                 self.eventImageView.layer.cornerRadius = 50;
-                [self.eventImageView setClipsToBounds:YES];
             });
         }
     }];
@@ -77,12 +76,12 @@
 #pragma mark - MKMapViewDelegate
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-//    CLLocationCoordinate2D center = [view.annotation coordinate];
-//    MKCoordinateSpan coordinateSpan;
-//    coordinateSpan.latitudeDelta = 0.01;
-//    coordinateSpan.longitudeDelta = 0.01;
-//    MKCoordinateRegion coordiateRegion = MKCoordinateRegionMake(center, coordinateSpan);
-//    [self.mapView setRegion:coordiateRegion animated:YES];
+    CLLocationCoordinate2D center = [view.annotation coordinate];
+    MKCoordinateSpan coordinateSpan;
+    coordinateSpan.latitudeDelta = 0.01;
+    coordinateSpan.longitudeDelta = 0.01;
+    MKCoordinateRegion coordiateRegion = MKCoordinateRegionMake(center, coordinateSpan);
+    [self.mapView setRegion:coordiateRegion animated:YES];
 }
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
