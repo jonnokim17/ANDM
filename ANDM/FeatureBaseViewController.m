@@ -13,6 +13,7 @@
 #import "SWRevealViewController.h"
 #import "Page.h"
 #import "MainFeedTableViewCell.h"
+#import "ANDMDetailViewController.h"
 
 @interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -46,9 +47,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
-
-
 
 - (id)initWithCoder:(NSCoder *)aCoder {
     self = [super initWithCoder:aCoder];
@@ -114,6 +114,17 @@
     cell.hashtagLabel.text = hashtagString;
 
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PFObject *object = self.objects[indexPath.row];
+
+        ANDMDetailViewController *detailVC = segue.destinationViewController;
+        detailVC.selectedPage = (Page *)object;
+    }
 }
 
 

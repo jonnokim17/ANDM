@@ -9,6 +9,7 @@
 #import "ANDMCreateEventViewController.h"
 #import "Page.h"
 #import "FeatureBaseViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface ANDMCreateEventViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -46,6 +47,19 @@
     [endDatePicker setDate:[NSDate date]];
     [endDatePicker addTarget:self action:@selector(updateEndDateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.endTimeTextField setInputView:endDatePicker];
+
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder geocodeAddressString:@"881 E. Buchanan Ct., Brea CA, 92821" completionHandler:^(NSArray* placemarks, NSError* error){
+//        for (CLPlacemark* aPlacemark in placemarks)
+//        {
+//            // Process the placemark.
+//            NSString *latDest1 = [NSString stringWithFormat:@"%.4f",aPlacemark.location.coordinate.latitude];
+//            NSString *lngDest1 = [NSString stringWithFormat:@"%.4f",aPlacemark.location.coordinate.longitude];
+//
+//            NSLog(@"latitude: %@", latDest1);
+//            NSLog(@"longitude: %@", lngDest1);
+//        }
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,11 +116,30 @@
     page.image = self.eventImageFile;
     page.date = self.startEventDate;
     page.endDate = self.endEventDate;
+    page.address = self.locationTextField.text;
 
-    //TODO: fix this later...
-    if ([self.eventTextField.text length] > 0) {
-        [page saveInBackground];
-    }
+    __block double latitude = 0;
+    __block double longitude = 0;
+
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:self.locationTextField.text completionHandler:^(NSArray* placemarks, NSError* error){
+        for (CLPlacemark* aPlacemark in placemarks)
+        {
+            // Process the placemark.
+            latitude = aPlacemark.location.coordinate.latitude;
+            longitude = aPlacemark.location.coordinate.longitude;
+
+            if (latitude != 0 && longitude != 0) {
+                PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
+                page.location = geoPoint;
+
+                //TODO: fix this later...
+                if ([self.eventTextField.text length] > 0) {
+                    [page saveInBackground];
+                }
+            }
+        }
+    }];
 
     [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
@@ -195,6 +228,8 @@
 
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
+
+//TODO: need to implement this later
 
 //- (void)registerForKeyboardNotifications {
 //

@@ -20,6 +20,7 @@
 		90625B6E1B8A4B8D0082AA7E /* ANDMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B6D1B8A4B8D0082AA7E /* ANDMSignUpViewController.m */; };
 		90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B731B8A55620082AA7E /* UIAlertController+Window.m */; };
 		90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B761B8A59DD0082AA7E /* SWRevealViewController.m */; };
+		907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */; };
 		90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */; };
 		90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC91B8A70EC009CDB18 /* Page.m */; };
 		DC0A291405BA0A719B80CD1C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F068CD97485BF39114E87D /* libPods.a */; };
@@ -63,6 +64,8 @@
 		90625B731B8A55620082AA7E /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Window.m"; sourceTree = "<group>"; };
 		90625B751B8A59DD0082AA7E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		90625B761B8A59DD0082AA7E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		907440A81B8BE19E0014CF16 /* ANDMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMDetailViewController.h; sourceTree = "<group>"; };
+		907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMDetailViewController.m; sourceTree = "<group>"; };
 		90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMCreateEventViewController.h; sourceTree = "<group>"; };
 		90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMCreateEventViewController.m; sourceTree = "<group>"; };
 		90EA6CC81B8A70EC009CDB18 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */,
 				90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */,
 				90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */,
+				907440A81B8BE19E0014CF16 /* ANDMDetailViewController.h */,
+				907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */,
 				90625B681B8A4B5D0082AA7E /* Login/Signup VC */,
 			);
 			name = ViewController;
@@ -369,6 +374,7 @@
 				900052E71B8A3F27005367A7 /* main.m in Sources */,
 				903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */,
 				90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */,
+				907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
