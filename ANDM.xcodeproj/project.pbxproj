@@ -13,6 +13,8 @@
 		900052F21B8A3F27005367A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 900052F11B8A3F27005367A7 /* Images.xcassets */; };
 		900052F51B8A3F27005367A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900052F31B8A3F27005367A7 /* LaunchScreen.xib */; };
 		900053011B8A3F27005367A7 /* ANDMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 900053001B8A3F27005367A7 /* ANDMTests.m */; };
+		900D2FA41B8D3FD20092CF4A /* InstagramData.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D2FA31B8D3FD20092CF4A /* InstagramData.m */; };
+		900D2FA71B8D4F3A0092CF4A /* InstagramTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D2FA61B8D4F3A0092CF4A /* InstagramTableViewCell.m */; };
 		902B87131B8A9BB200E6F58E /* FeatureBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */; };
 		902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 902B87151B8AA0EC00E6F58E /* MainFeedTableViewCell.m */; };
 		903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */; };
@@ -50,6 +52,10 @@
 		900052FA1B8A3F27005367A7 /* ANDMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ANDMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		900052FF1B8A3F27005367A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900053001B8A3F27005367A7 /* ANDMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANDMTests.m; sourceTree = "<group>"; };
+		900D2FA21B8D3FD20092CF4A /* InstagramData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramData.h; sourceTree = "<group>"; };
+		900D2FA31B8D3FD20092CF4A /* InstagramData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramData.m; sourceTree = "<group>"; };
+		900D2FA51B8D4F3A0092CF4A /* InstagramTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramTableViewCell.h; sourceTree = "<group>"; };
+		900D2FA61B8D4F3A0092CF4A /* InstagramTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramTableViewCell.m; sourceTree = "<group>"; };
 		902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureBaseViewController.h; sourceTree = "<group>"; };
 		902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureBaseViewController.m; sourceTree = "<group>"; };
 		902B87141B8AA0EC00E6F58E /* MainFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFeedTableViewCell.h; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 			children = (
 				902B87141B8AA0EC00E6F58E /* MainFeedTableViewCell.h */,
 				902B87151B8AA0EC00E6F58E /* MainFeedTableViewCell.m */,
+				900D2FA51B8D4F3A0092CF4A /* InstagramTableViewCell.h */,
+				900D2FA61B8D4F3A0092CF4A /* InstagramTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -204,6 +212,8 @@
 			children = (
 				90EA6CC81B8A70EC009CDB18 /* Page.h */,
 				90EA6CC91B8A70EC009CDB18 /* Page.m */,
+				900D2FA21B8D3FD20092CF4A /* InstagramData.h */,
+				900D2FA31B8D3FD20092CF4A /* InstagramData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -372,6 +382,8 @@
 				900052EA1B8A3F27005367A7 /* AppDelegate.m in Sources */,
 				902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */,
 				900052E71B8A3F27005367A7 /* main.m in Sources */,
+				900D2FA41B8D3FD20092CF4A /* InstagramData.m in Sources */,
+				900D2FA71B8D4F3A0092CF4A /* InstagramTableViewCell.m in Sources */,
 				903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */,
 				90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */,
 				907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */,
