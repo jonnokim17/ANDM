@@ -15,6 +15,7 @@
 		900053011B8A3F27005367A7 /* ANDMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 900053001B8A3F27005367A7 /* ANDMTests.m */; };
 		900D2FA41B8D3FD20092CF4A /* InstagramData.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D2FA31B8D3FD20092CF4A /* InstagramData.m */; };
 		900D2FA71B8D4F3A0092CF4A /* InstagramTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900D2FA61B8D4F3A0092CF4A /* InstagramTableViewCell.m */; };
+		9013D3981B8FA6EE000DD348 /* NSMutableString+AppendPrefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013D3971B8FA6EE000DD348 /* NSMutableString+AppendPrefix.m */; };
 		902B87131B8A9BB200E6F58E /* FeatureBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */; };
 		902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 902B87151B8AA0EC00E6F58E /* MainFeedTableViewCell.m */; };
 		903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */; };
@@ -56,6 +57,8 @@
 		900D2FA31B8D3FD20092CF4A /* InstagramData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramData.m; sourceTree = "<group>"; };
 		900D2FA51B8D4F3A0092CF4A /* InstagramTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramTableViewCell.h; sourceTree = "<group>"; };
 		900D2FA61B8D4F3A0092CF4A /* InstagramTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramTableViewCell.m; sourceTree = "<group>"; };
+		9013D3961B8FA6EE000DD348 /* NSMutableString+AppendPrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+AppendPrefix.h"; sourceTree = "<group>"; };
+		9013D3971B8FA6EE000DD348 /* NSMutableString+AppendPrefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+AppendPrefix.m"; sourceTree = "<group>"; };
 		902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureBaseViewController.h; sourceTree = "<group>"; };
 		902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureBaseViewController.m; sourceTree = "<group>"; };
 		902B87141B8AA0EC00E6F58E /* MainFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFeedTableViewCell.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 			children = (
 				90625B721B8A55620082AA7E /* UIAlertController+Window.h */,
 				90625B731B8A55620082AA7E /* UIAlertController+Window.m */,
+				9013D3961B8FA6EE000DD348 /* NSMutableString+AppendPrefix.h */,
+				9013D3971B8FA6EE000DD348 /* NSMutableString+AppendPrefix.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				903D716D1B8A5BBB004D1047 /* ANDMMenuViewController.m in Sources */,
 				90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */,
 				907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */,
+				9013D3981B8FA6EE000DD348 /* NSMutableString+AppendPrefix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

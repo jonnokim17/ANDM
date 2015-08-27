@@ -7,14 +7,13 @@
 //
 
 #import "InstagramData.h"
+#import "NSDate+TimeAgo.h"
 
 NSString * const kInstagramClientID = @"9ec8da819f1b4cdaa02fb0273f6b6247";
 NSString * const kInstagramClientSecret = @"ed606dd6328447bc984b73b10d514b75";
 NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb802f9";
 
 @implementation InstagramData
-
-//@property (nonatomic, strong) NSDate *createdTime;
 
 - (instancetype)initWithDictionary:(NSDictionary *)instagramInfo
 {
@@ -35,8 +34,7 @@ NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb80
         NSString *urlString = instagramInfo[@"link"];
         self.instagramURL = [NSURL URLWithString:urlString];
 
-        //TODO: implemented created at timestamp
-//        self.createdTime = [self dateFromNumber:instagramInfo[@"created_time"]];
+        self.timeStamp = [self dateFromNumber:instagramInfo[@"created_time"]];
     }
 
     return self;
@@ -74,14 +72,13 @@ NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb80
     }] resume];
 }
 
-//- (NSDate *)dateFromNumber:(NSNumber *)number
-//{
-//    NSNumber *time = [NSNumber numberWithDouble:([number doubleValue])];
-//    NSTimeInterval interval = [time doubleValue];
-//
-//    NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval/1000.];
-//
-//    return date;
-//}
+- (NSString *)dateFromNumber:(NSNumber *)number
+{
+    NSTimeInterval seconds = [number doubleValue];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:seconds];
+    NSString *timeAgo = [date timeAgo];
+
+    return timeAgo;
+}
 
 @end

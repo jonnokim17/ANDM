@@ -14,6 +14,7 @@
 #import "Page.h"
 #import "MainFeedTableViewCell.h"
 #import "ANDMDetailViewController.h"
+#import "NSDate+TimeAgo.h"
 
 @interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -112,6 +113,9 @@
     [hashtagString insertString:@"#" atIndex:0];
 
     cell.hashtagLabel.text = hashtagString;
+
+    NSDate *eventDate = [object objectForKey:@"date"];
+    cell.dateUntilNowLabel.text = [eventDate dateTimeUntilNow];
 
     return cell;
 }

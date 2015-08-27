@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "InstagramData.h"
 #import "InstagramTableViewCell.h"
+#import "SVProgressHUD.h"
 
 @interface ANDMDetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -32,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self showLoadingIndicator];
 
     self.navigationItem.title = @"ANDM";
 
@@ -127,18 +130,24 @@
 
     InstagramData *instagramData = self.instagramData[indexPath.row];
 
-    cell.usernameLabel.text = instagramData.username;
-    cell.tagLabel.text = [instagramData.tags componentsJoinedByString:@", "];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.usernameLabel.text = instagramData.username;
+        cell.tagLabel.text = [instagramData.tags componentsJoinedByString:@", "];
+        cell.timeStampLabel.text = instagramData.timeStamp;
 
-    UIImage *profileImage = [UIImage imageWithData:instagramData.userProfileImageData];
-    cell.userprofileImageView.image = profileImage;
+        cell.userprofileImageView.image = [UIImage imageWithData:instagramData.userProfileImageData];
+        cell.userprofileImageView.alpha = 0.0f;
 
-    UIImage *contentImage = [UIImage imageWithData:instagramData.contentImageData];
-    cell.contentImageView.image = contentImage;
+        cell.contentImageView.image = [UIImage imageWithData:instagramData.contentImageData];
+        cell.contentImageView.alpha = 0.0f;
 
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateStyle:NSDateFormatterShortStyle];
-//    cell.timeStampLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:instagramData.createdTime]];
+        [UIView animateWithDuration:0.5f animations:^{
+            cell.userprofileImageView.alpha = 1.0f;
+            cell.contentImageView.alpha = 1.0f;
+        }];
+
+        [SVProgressHUD dismiss];
+    });
 
     return cell;
 }
@@ -149,7 +158,14 @@
     InstagramData *selectedInstagram = self.instagramData[indexPath.row];
 
     [[UIApplication sharedApplication] openURL:selectedInstagram.instagramURL];
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.stackoverflow.com"]];
+}
+
+#pragma mark - Helpers
+- (void)showLoadingIndicator
+{
+    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blueColor]];
+    [SVProgressHUD show];
 }
 
 @end

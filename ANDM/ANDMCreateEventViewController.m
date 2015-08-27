@@ -121,6 +121,8 @@
     __block double latitude = 0;
     __block double longitude = 0;
 
+    __weak typeof(self) weakSelf = self;
+
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:self.locationTextField.text completionHandler:^(NSArray* placemarks, NSError* error){
         for (CLPlacemark* aPlacemark in placemarks)
@@ -134,7 +136,7 @@
                 page.location = geoPoint;
 
                 //TODO: fix this later...
-                if ([self.eventTextField.text length] > 0) {
+                if ([weakSelf.eventTextField.text length] > 0) {
                     [page saveInBackground];
                 }
             }
@@ -145,6 +147,7 @@
 }
 - (IBAction)onCancel:(UIBarButtonItem *)sender
 {
+    //TODO: Fix this...
     [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
 - (IBAction)onAddImage:(UIButton *)sender

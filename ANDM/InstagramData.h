@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSData *userProfileImageData;
-@property (nonatomic, strong) NSDate *createdTime;
+@property (nonatomic, strong) NSString *timeStamp;
 @property (nonatomic, strong) NSURL *instagramURL;
 @property (nonatomic, strong) NSData *contentImageData;
 
