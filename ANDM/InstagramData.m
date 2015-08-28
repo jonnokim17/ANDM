@@ -42,7 +42,6 @@ NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb80
 
 + (void)retrieveVideoInformation:(NSString *)hastag andWithCompletion:(void(^)(NSArray *data, NSError *error))complete
 {
-
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?access_token=%@", [hastag lowercaseString], kAccessToken]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
@@ -65,6 +64,8 @@ NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb80
                     }
                 }
                 complete(instagramArray, nil);
+            } else {
+                complete(nil, error);
             }
 
         } else {

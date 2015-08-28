@@ -91,16 +91,11 @@
     [super viewWillAppear:animated];
 
     //TODO: move this into model class
-    PFQuery *query = [Favorite query];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query whereKey:@"favoritedPage" equalTo:self.selectedPage];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+    [Favorite checkIfSelectedPageisFavorited:self.selectedPage withCompletion:^(PFObject *object, NSError *error) {
         if (object) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.favoriteStar setImage:[UIImage imageNamed:@"colorStar"]];
             });
-        } else {
-            NSLog(@"not a favorited page");
         }
     }];
 }
@@ -188,14 +183,6 @@
     [[UIApplication sharedApplication] openURL:selectedInstagram.instagramURL];
 }
 
-#pragma mark - Helpers
-- (void)showLoadingIndicator
-{
-    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
-    [SVProgressHUD setForegroundColor:[UIColor blueColor]];
-    [SVProgressHUD show];
-}
-
 - (IBAction)onFavoriteStar:(UITapGestureRecognizer *)sender
 {
     if ([self.favoriteStar.image isEqual:[UIImage imageNamed:@"star"]]) {
@@ -212,12 +199,8 @@
         }];
         
     } else if ([self.favoriteStar.image isEqual:[UIImage imageNamed:@"colorStar"]]) {
-        PFQuery *query = [Favorite query];
-        [query whereKey:@"user" equalTo:[PFUser currentUser]];
-        [query whereKey:@"favoritedPage" equalTo:self.selectedPage];
-        [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        [Favorite checkIfSelectedPageisFavorited:self.selectedPage withCompletion:^(PFObject *object, NSError *error) {
             if (object) {
-#warning need to delete PFObject in background...
                 [object delete];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.favoriteStar setImage:[UIImage imageNamed:@"star"]];
@@ -225,6 +208,14 @@
             }
         }];
     }
+}
+
+#pragma mark - Helpers
+- (void)showLoadingIndicator
+{
+    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blueColor]];
+    [SVProgressHUD show];
 }
 
 @end

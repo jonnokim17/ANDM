@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.menuArray = @[@"profile", @"event", @"favorites", @"logout"];
+    self.menuArray = @[@"Profile", @"Event", @"Favorites", @"Logout"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -11,6 +11,8 @@
 #import "FeatureBaseViewController.h"
 #import "Favorite.h"
 #import "Page.h"
+#import "SVProgressHUD.h"
+#import "ANDMDetailViewController.h"
 
 @interface ANDMFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -28,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self showLoadingIndicator];
 
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.mainFeedVC = [storyboard instantiateViewControllerWithIdentifier:@"mainfeed"];
@@ -71,9 +75,16 @@
 
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
+                [SVProgressHUD dismiss];
             });
         }];
     }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +109,26 @@
 - (IBAction)onHome:(UIBarButtonItem *)sender
 {
     [self.navigationController pushViewController:self.mainFeedVC animated:YES];
+}
+
+#pragma mark - Helpers
+- (void)showLoadingIndicator
+{
+    [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
+    [SVProgressHUD setForegroundColor:[UIColor blueColor]];
+    [SVProgressHUD show];
+}
+
+#pragma Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"favoriteSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Page *selectedFavoritedPage = self.favoritesArray[indexPath.row];
+
+        ANDMDetailViewController *detailVC = segue.destinationViewController;
+        detailVC.selectedPage = selectedFavoritedPage;
+    }
 }
 
 @end

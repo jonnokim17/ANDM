@@ -203,8 +203,6 @@
 			children = (
 				902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */,
 				902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */,
-				90625B751B8A59DD0082AA7E /* SWRevealViewController.h */,
-				90625B761B8A59DD0082AA7E /* SWRevealViewController.m */,
 				903D716B1B8A5BBB004D1047 /* ANDMMenuViewController.h */,
 				903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */,
 				90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */,
@@ -249,6 +247,8 @@
 				90625B731B8A55620082AA7E /* UIAlertController+Window.m */,
 				9013D3961B8FA6EE000DD348 /* NSMutableString+AppendPrefix.h */,
 				9013D3971B8FA6EE000DD348 /* NSMutableString+AppendPrefix.m */,
+				90625B751B8A59DD0082AA7E /* SWRevealViewController.h */,
+				90625B761B8A59DD0082AA7E /* SWRevealViewController.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";

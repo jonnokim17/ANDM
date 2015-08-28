@@ -10,9 +10,13 @@
 #import <Parse/Parse.h>
 #import "Page.h"
 
+typedef void(^checkSelectedPageBlock)(PFObject *object, NSError *error);
+
 @interface Favorite : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) Page *favoritedPage;
 @property (nonatomic, strong) PFUser *user;
+
++ (void)checkIfSelectedPageisFavorited:(Page *)selectedPage withCompletion:(checkSelectedPageBlock)completion;
 
 @end
