@@ -11,6 +11,7 @@
 #import "InstagramData.h"
 #import "InstagramTableViewCell.h"
 #import "SVProgressHUD.h"
+#import "Favorite.h"
 
 @interface ANDMDetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -20,11 +21,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteStar;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property MKPointAnnotation *eventAnnotation;
-
 @property (strong, nonatomic) NSArray *instagramData;
 
 @end
@@ -41,6 +42,8 @@
     [InstagramData retrieveVideoInformation:self.selectedPage.hashtag andWithCompletion:^(NSArray *data, NSError *error) {
         if (!error) {
             self.instagramData = data;
+        } else {
+            NSLog(@"%@", error.description);
         }
     }];
 
@@ -81,6 +84,31 @@
     coordinateSpan.longitudeDelta = 0.25;
     MKCoordinateRegion coordiateRegion = MKCoordinateRegionMake(center, coordinateSpan);
     [self.mapView setRegion:coordiateRegion animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    //TODO: move this into model class
+    PFQuery *query = [Favorite query];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"favoritedPage" equalTo:self.selectedPage];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if (object) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.favoriteStar setImage:[UIImage imageNamed:@"colorStar"]];
+            });
+        } else {
+            NSLog(@"not a favorited page");
+        }
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
 -(void)setInstagramData:(NSArray *)instagramData
@@ -166,6 +194,37 @@
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setForegroundColor:[UIColor blueColor]];
     [SVProgressHUD show];
+}
+
+- (IBAction)onFavoriteStar:(UITapGestureRecognizer *)sender
+{
+    if ([self.favoriteStar.image isEqual:[UIImage imageNamed:@"star"]]) {
+        Favorite *favorite = [Favorite objectWithClassName:@"Favorite"];
+        favorite.favoritedPage = self.selectedPage;
+        favorite.user = [PFUser currentUser];
+        [favorite saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                NSLog(@"Page to favorite");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.favoriteStar setImage:[UIImage imageNamed:@"colorStar"]];
+                });
+            }
+        }];
+        
+    } else if ([self.favoriteStar.image isEqual:[UIImage imageNamed:@"colorStar"]]) {
+        PFQuery *query = [Favorite query];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query whereKey:@"favoritedPage" equalTo:self.selectedPage];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            if (object) {
+#warning need to delete PFObject in background...
+                [object delete];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.favoriteStar setImage:[UIImage imageNamed:@"star"]];
+                });
+            }
+        }];
+    }
 }
 
 @end

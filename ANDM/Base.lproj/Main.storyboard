@@ -26,7 +26,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHG-JN-9tM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-153" y="647"/>
+            <point key="canvasLocation" x="-863" y="1291"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="rmb-5a-i9d">
@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooi-uH-bfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="546" y="358"/>
+            <point key="canvasLocation" x="428" y="549"/>
         </scene>
         <!--Create Event-->
         <scene sceneID="4UG-Cb-yFb">
@@ -214,11 +214,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="lJa-NA-Lal">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hJy-2y-kGg">
-                            <connections>
-                                <action selector="onCancel:" destination="PLe-24-Sjv" id="yha-3v-gVg"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="hJy-2y-kGg"/>
                     </navigationItem>
                     <connections>
                         <outlet property="endTimeTextField" destination="V32-Mf-KRr" id="FHm-Ua-vjT"/>
@@ -227,6 +223,7 @@
                         <outlet property="hashtagTextField" destination="6Vl-hd-B2N" id="V2u-ku-Yn8"/>
                         <outlet property="imageAddButton" destination="VlN-lf-tuF" id="myB-MZ-UAr"/>
                         <outlet property="locationTextField" destination="lzB-IN-LrV" id="00i-yN-1Pw"/>
+                        <outlet property="sidebarButton" destination="hJy-2y-kGg" id="lE7-Sk-Vh3"/>
                         <outlet property="startTimeTextField" destination="On5-hC-PZn" id="osh-wQ-lOX"/>
                     </connections>
                 </viewController>
@@ -252,6 +249,9 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4b-cg-dwy" customClass="PFImageView">
                                             <rect key="frame" x="8" y="8" width="584" height="174"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="174" id="fSj-ro-hrA"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSD-Lv-IGU">
                                             <rect key="frame" x="8" y="18" width="584" height="21"/>
@@ -386,11 +386,11 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9x-45-Hgc" id="mIv-eN-zWX">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ra-gu-jBy">
-                                                    <rect key="frame" x="56" y="17" width="423" height="20.5"/>
+                                                    <rect key="frame" x="56" y="17" width="423" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -409,13 +409,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tags" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYz-Ca-J1F">
-                                                    <rect key="frame" x="8" y="214" width="544" height="17.5"/>
+                                                    <rect key="frame" x="8" y="214" width="544" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="time stamp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-5C-wCM">
-                                                    <rect key="frame" x="489" y="19" width="63" height="16.5"/>
+                                                    <rect key="frame" x="489" y="19" width="63" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -473,6 +473,17 @@
                                     <outlet property="delegate" destination="VIm-je-5cv" id="f8R-gE-nKg"/>
                                 </connections>
                             </mapView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="kYs-h5-Oox">
+                                <rect key="frame" x="555" y="78" width="25" height="25"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="9fl-tt-QGV"/>
+                                    <constraint firstAttribute="width" constant="25" id="ovN-2o-9zE"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qbQ-bx-z2X" appends="YES" id="5uh-Oo-jGE"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -480,6 +491,8 @@
                             <constraint firstItem="dXl-e3-bPl" firstAttribute="leading" secondItem="rU1-xd-S5e" secondAttribute="leading" id="50Q-uM-U4L"/>
                             <constraint firstItem="zEu-NG-MAl" firstAttribute="top" secondItem="rU1-xd-S5e" secondAttribute="bottom" constant="16" id="5cM-CV-lIa"/>
                             <constraint firstItem="11M-Mz-IcQ" firstAttribute="trailing" secondItem="zEu-NG-MAl" secondAttribute="trailing" id="6gJ-8L-6xt"/>
+                            <constraint firstItem="kYs-h5-Oox" firstAttribute="top" secondItem="tf9-Rp-7IX" secondAttribute="top" id="8Am-fn-7ZC"/>
+                            <constraint firstItem="kYs-h5-Oox" firstAttribute="leading" secondItem="tf9-Rp-7IX" secondAttribute="trailing" constant="33" id="BE1-SE-jZ2"/>
                             <constraint firstItem="11M-Mz-IcQ" firstAttribute="top" secondItem="zEu-NG-MAl" secondAttribute="bottom" constant="8" symbolic="YES" id="BHm-yQ-HsQ"/>
                             <constraint firstItem="dXl-e3-bPl" firstAttribute="leading" secondItem="INi-DW-A5J" secondAttribute="leadingMargin" id="EFI-eQ-D2d"/>
                             <constraint firstItem="zEu-NG-MAl" firstAttribute="top" secondItem="uKk-ec-3p7" secondAttribute="bottom" constant="8" symbolic="YES" id="EQz-1R-WLh"/>
@@ -522,12 +535,18 @@
                         <outlet property="dateLabel" destination="rU1-xd-S5e" id="AGd-9H-m9Z"/>
                         <outlet property="eventImageView" destination="dXl-e3-bPl" id="rUv-3t-DeC"/>
                         <outlet property="eventTitleLabel" destination="tf9-Rp-7IX" id="0LV-4Y-Z83"/>
+                        <outlet property="favoriteStar" destination="kYs-h5-Oox" id="XdM-yZ-oUf"/>
                         <outlet property="hashtagLabel" destination="RVu-YK-qs1" id="1XJ-QD-Crj"/>
                         <outlet property="mapView" destination="zEu-NG-MAl" id="3s5-T9-SHL"/>
                         <outlet property="tableView" destination="11M-Mz-IcQ" id="AbR-0S-86K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLN-gb-5MR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qbQ-bx-z2X">
+                    <connections>
+                        <action selector="onFavoriteStar:" destination="VIm-je-5cv" id="QA7-lI-9rN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1859" y="1064"/>
         </scene>
@@ -565,11 +584,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtP-HH-rrT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="546" y="1064"/>
+            <point key="canvasLocation" x="428" y="1232"/>
         </scene>
     </scenes>
     <resources>
         <image name="menu" width="28" height="20"/>
+        <image name="star" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="R7T-eX-9rW"/>

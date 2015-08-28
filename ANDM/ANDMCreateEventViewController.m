@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Page.h"
 #import "FeatureBaseViewController.h"
+#import "SWRevealViewController.h"
 
 @interface ANDMCreateEventViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -21,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *imageAddButton;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) UIImage *selectedEventImage;
 @property (strong, nonatomic) PFFile *eventImageFile;
 @property (strong, nonatomic) NSDate *startEventDate;
@@ -34,6 +36,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.mainFeedVC = [storyboard instantiateViewControllerWithIdentifier:@"mainfeed"];
@@ -145,11 +155,7 @@
 
     [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
-- (IBAction)onCancel:(UIBarButtonItem *)sender
-{
-    //TODO: Fix this...
-    [self.navigationController pushViewController:self.mainFeedVC animated:YES];
-}
+
 - (IBAction)onAddImage:(UIButton *)sender
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil

@@ -24,6 +24,7 @@
 		90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B731B8A55620082AA7E /* UIAlertController+Window.m */; };
 		90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B761B8A59DD0082AA7E /* SWRevealViewController.m */; };
 		907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */; };
+		90DA3D801B8FD214003DDC3C /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 90DA3D7F1B8FD214003DDC3C /* Favorite.m */; };
 		90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */; };
 		90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC91B8A70EC009CDB18 /* Page.m */; };
 		DC0A291405BA0A719B80CD1C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F068CD97485BF39114E87D /* libPods.a */; };
@@ -75,6 +76,8 @@
 		90625B761B8A59DD0082AA7E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		907440A81B8BE19E0014CF16 /* ANDMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMDetailViewController.h; sourceTree = "<group>"; };
 		907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMDetailViewController.m; sourceTree = "<group>"; };
+		90DA3D7E1B8FD214003DDC3C /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
+		90DA3D7F1B8FD214003DDC3C /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMCreateEventViewController.h; sourceTree = "<group>"; };
 		90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMCreateEventViewController.m; sourceTree = "<group>"; };
 		90EA6CC81B8A70EC009CDB18 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
@@ -195,12 +198,12 @@
 		90625B651B8A4A6A0082AA7E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */,
+				902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */,
 				90625B751B8A59DD0082AA7E /* SWRevealViewController.h */,
 				90625B761B8A59DD0082AA7E /* SWRevealViewController.m */,
 				903D716B1B8A5BBB004D1047 /* ANDMMenuViewController.h */,
 				903D716C1B8A5BBB004D1047 /* ANDMMenuViewController.m */,
-				902B87111B8A9BB200E6F58E /* FeatureBaseViewController.h */,
-				902B87121B8A9BB200E6F58E /* FeatureBaseViewController.m */,
 				90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */,
 				90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */,
 				907440A81B8BE19E0014CF16 /* ANDMDetailViewController.h */,
@@ -215,6 +218,8 @@
 			children = (
 				90EA6CC81B8A70EC009CDB18 /* Page.h */,
 				90EA6CC91B8A70EC009CDB18 /* Page.m */,
+				90DA3D7E1B8FD214003DDC3C /* Favorite.h */,
+				90DA3D7F1B8FD214003DDC3C /* Favorite.m */,
 				900D2FA21B8D3FD20092CF4A /* InstagramData.h */,
 				900D2FA31B8D3FD20092CF4A /* InstagramData.m */,
 			);
@@ -383,6 +388,7 @@
 				90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */,
 				90625B6E1B8A4B8D0082AA7E /* ANDMSignUpViewController.m in Sources */,
 				90625B6B1B8A4B800082AA7E /* ANDMLoginViewController.m in Sources */,
+				90DA3D801B8FD214003DDC3C /* Favorite.m in Sources */,
 				90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */,
 				900052EA1B8A3F27005367A7 /* AppDelegate.m in Sources */,
 				902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */,
