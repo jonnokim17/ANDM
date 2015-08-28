@@ -35,8 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self showLoadingIndicator];
-
     self.navigationItem.title = @"ANDM";
 
     [InstagramData retrieveVideoInformation:self.selectedPage.hashtag andWithCompletion:^(NSArray *data, NSError *error) {
@@ -90,7 +88,8 @@
 {
     [super viewWillAppear:animated];
 
-    //TODO: move this into model class
+    [self showLoadingIndicator];
+
     [Favorite checkIfSelectedPageisFavorited:self.selectedPage withCompletion:^(PFObject *object, NSError *error) {
         if (object) {
             dispatch_async(dispatch_get_main_queue(), ^{
