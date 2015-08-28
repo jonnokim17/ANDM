@@ -13,6 +13,7 @@
 #import "Page.h"
 #import "SVProgressHUD.h"
 #import "ANDMDetailViewController.h"
+#import "NSDate+TimeAgo.h"
 
 @interface ANDMFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -31,8 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self showLoadingIndicator];
-
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.mainFeedVC = [storyboard instantiateViewControllerWithIdentifier:@"mainfeed"];
 
@@ -43,34 +42,21 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+}
 
-//    PFQuery *query = [Favorite query];
-//    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-//    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-//
-//        Favorite *favoritedPage = (Favorite *)object;
-//        PFQuery *pageQuery = [Page query];
-//        [pageQuery whereKey:@"objectId" equalTo:favoritedPage.favoritedPage.objectId];
-//        [pageQuery getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-//            self.favoritesArray = [@[] mutableCopy];
-//            [self.favoritesArray addObject:object];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [self.tableView reloadData];
-//            });
-//        }];
-//    }];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 
-    PFQuery *query = [Favorite query];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    [self showLoadingIndicator];
+
+    [Favorite fetchAllPagesForCurrentUserWithCompletion:^(NSArray *objects, NSError *error) {
         NSMutableArray *favoritePageIdsArray = [@[] mutableCopy];
         for (Favorite *favorite in objects) {
             [favoritePageIdsArray addObject:favorite.favoritedPage.objectId];
         }
 
-        PFQuery *pageQuery = [Page query];
-        [pageQuery whereKey:@"objectId" containedIn:favoritePageIdsArray];
-        [pageQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        [Page getPagesWithObjectIds:favoritePageIdsArray andCompletion:^(NSArray *objects, NSError *error) {
             self.favoritesArray = objects;
 
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -103,6 +89,11 @@
     Page *favoritedPage = self.favoritesArray[indexPath.row];
 
     cell.textLabel.text = favoritedPage.pageName;
+    cell.detailTextLabel.text = [favoritedPage.date dateTimeUntilNow];
+    
+//    [favoritedPage.image getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+//        cell.imageView.image = [UIImage imageWithData:data];
+//    }];
 
     return cell;
 }

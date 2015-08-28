@@ -178,8 +178,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     InstagramData *selectedInstagram = self.instagramData[indexPath.row];
-
-    [[UIApplication sharedApplication] openURL:selectedInstagram.instagramURL];
+    [self urlRedirectAlertTo:selectedInstagram.instagramURL];
 }
 
 - (IBAction)onFavoriteStar:(UITapGestureRecognizer *)sender
@@ -215,6 +214,22 @@
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setForegroundColor:[UIColor blueColor]];
     [SVProgressHUD show];
+}
+
+- (void)urlRedirectAlertTo:(NSURL *)url
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Would you like to view this Instagram on the web?" preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+
+    UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
+
+    [alert addAction:noButton];
+    [alert addAction:yesButton];
+
+    [self presentViewController:alert animated:yesButton completion:nil];
 }
 
 @end

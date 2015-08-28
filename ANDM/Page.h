@@ -9,6 +9,8 @@
 #import "PFObject.h"
 #import <Parse/Parse.h>
 
+typedef void(^getPagesBlock)(NSArray *objects, NSError *error);
+
 @interface Page : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) NSString *address;
@@ -19,6 +21,6 @@
 @property (nonatomic, strong) NSString *pageName;
 @property (nonatomic, strong) PFFile *image;
 
-+ (void)getPagesWithCompletion:(void(^)(NSArray *pages, NSError *error))completion;
++ (void)getPagesWithObjectIds:(NSArray *)objectIds andCompletion:(getPagesBlock)completion;
 
 @end

@@ -64,6 +64,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 3) {
+        [self logOutAlert];
+    }
+}
+
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Helpers
+- (void)logOutAlert
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to logout?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         [PFUser logOut];
 
         SWRevealViewController *revealViewController = self.revealViewController;
@@ -74,12 +90,12 @@
         ANDMLoginViewController *loginVC = [[ANDMLoginViewController alloc] init];
         [loginVC setDelegate:self];
         [self presentViewController:loginVC animated:YES completion:nil];
-    }
-}
+    }];
 
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

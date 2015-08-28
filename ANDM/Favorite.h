@@ -11,6 +11,7 @@
 #import "Page.h"
 
 typedef void(^checkSelectedPageBlock)(PFObject *object, NSError *error);
+typedef void(^allPagesBlock)(NSArray *objects, NSError *error);
 
 @interface Favorite : PFObject <PFSubclassing>
 
@@ -18,5 +19,6 @@ typedef void(^checkSelectedPageBlock)(PFObject *object, NSError *error);
 @property (nonatomic, strong) PFUser *user;
 
 + (void)checkIfSelectedPageisFavorited:(Page *)selectedPage withCompletion:(checkSelectedPageBlock)completion;
++ (void)fetchAllPagesForCurrentUserWithCompletion:(allPagesBlock)completion;
 
 @end

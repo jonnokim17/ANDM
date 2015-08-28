@@ -28,13 +28,13 @@
     return @"Page";
 }
 
-+ (void)getPagesWithCompletion:(void(^)(NSArray *pages, NSError *error))completion
++ (void)getPagesWithObjectIds:(NSArray *)objectIds andCompletion:(getPagesBlock)completion
 {
-    PFQuery *query = [Page query];
+    PFQuery *query = [self query];
+    [query whereKey:@"objectId" containedIn:objectIds];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
-            NSArray *pagesArray = objects;
-            completion(pagesArray, nil);
+        if (objects) {
+            completion(objects, nil);
         } else {
             completion(nil, error);
         }

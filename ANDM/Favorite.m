@@ -25,12 +25,25 @@
 
 + (void)checkIfSelectedPageisFavorited:(Page *)selectedPage withCompletion:(checkSelectedPageBlock)completion
 {
-    PFQuery *query = [Favorite query];
+    PFQuery *query = [self query];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query whereKey:@"favoritedPage" equalTo:selectedPage];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         if (object) {
             completion(object, nil);
+        } else {
+            completion(nil, error);
+        }
+    }];
+}
+
++ (void)fetchAllPagesForCurrentUserWithCompletion:(allPagesBlock)completion
+{
+    PFQuery *query = [self query];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects) {
+            completion(objects, nil);
         } else {
             completion(nil, error);
         }
