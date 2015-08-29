@@ -97,10 +97,6 @@
 
     return cell;
 }
-- (IBAction)onHome:(UIBarButtonItem *)sender
-{
-    [self.navigationController pushViewController:self.mainFeedVC animated:YES];
-}
 
 #pragma mark - Helpers
 - (void)showLoadingIndicator

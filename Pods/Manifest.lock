@@ -1,8 +1,8 @@
 PODS:
   - Bolts/Tasks (1.2.1)
   - NSDate+TimeAgo (1.0.3)
-  - Parse (1.8.1):
-    - Bolts/Tasks (>= 1.2.0)
+  - Parse (1.8.2):
+    - Bolts/Tasks (>= 1.2.1)
   - ParseUI (1.1.5):
     - Bolts/Tasks (~> 1.2)
     - Parse (~> 1.8)
@@ -17,7 +17,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
-  Parse: 2155953b1565494095d5fa5c83b3c77f2c677c09
+  Parse: 188601c6cd91fae55906badd283b513104a3a8c9
   ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 

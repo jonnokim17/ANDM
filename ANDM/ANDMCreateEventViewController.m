@@ -155,10 +155,6 @@
 
     [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
-- (IBAction)onHome:(UIBarButtonItem *)sender
-{
-    [self.navigationController pushViewController:self.mainFeedVC animated:YES];
-}
 
 - (IBAction)onAddImage:(UIButton *)sender
 {

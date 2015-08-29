@@ -25,6 +25,7 @@
 		90625B771B8A59DD0082AA7E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90625B761B8A59DD0082AA7E /* SWRevealViewController.m */; };
 		906D12FA1B9001400076D873 /* ANDMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D12F91B9001400076D873 /* ANDMFavoritesViewController.m */; };
 		907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */; };
+		90D24F801B9230FC00EC5B9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D24F7F1B9230FC00EC5B9F /* CoreLocation.framework */; };
 		90DA3D801B8FD214003DDC3C /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 90DA3D7F1B8FD214003DDC3C /* Favorite.m */; };
 		90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */; };
 		90EA6CCA1B8A70EC009CDB18 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC91B8A70EC009CDB18 /* Page.m */; };
@@ -79,6 +80,7 @@
 		906D12F91B9001400076D873 /* ANDMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMFavoritesViewController.m; sourceTree = "<group>"; };
 		907440A81B8BE19E0014CF16 /* ANDMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMDetailViewController.h; sourceTree = "<group>"; };
 		907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMDetailViewController.m; sourceTree = "<group>"; };
+		90D24F7F1B9230FC00EC5B9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90DA3D7E1B8FD214003DDC3C /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		90DA3D7F1B8FD214003DDC3C /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		90EA6CC51B8A6E34009CDB18 /* ANDMCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMCreateEventViewController.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D24F801B9230FC00EC5B9F /* CoreLocation.framework in Frameworks */,
 				DC0A291405BA0A719B80CD1C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +113,7 @@
 		52E7DF96343CFEF181837A0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90D24F7F1B9230FC00EC5B9F /* CoreLocation.framework */,
 				E0F068CD97485BF39114E87D /* libPods.a */,
 			);
 			name = Frameworks;

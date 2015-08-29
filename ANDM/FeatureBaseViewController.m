@@ -7,6 +7,7 @@
 //
 
 #import "FeatureBaseViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import "ANDMLoginViewController.h"
 #import "ANDMSignUpViewController.h"
 #import "UIAlertController+Window.h"
@@ -16,9 +17,10 @@
 #import "ANDMDetailViewController.h"
 #import "NSDate+TimeAgo.h"
 
-@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) ANDMLoginViewController *ANDMLoginViewController;
+@property CLLocationManager *locationManager;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
 
@@ -28,6 +30,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager requestWhenInUseAuthorization];
+    self.locationManager.delegate = self;
 
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
