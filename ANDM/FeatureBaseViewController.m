@@ -16,8 +16,9 @@
 #import "MainFeedTableViewCell.h"
 #import "ANDMDetailViewController.h"
 #import "NSDate+TimeAgo.h"
+#import "ANDMViewController.h"
 
-@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchBarDelegate>
+@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, ANDMViewControllerDelegate>
 {
     CLLocation *currentLocation;
 }
@@ -34,6 +35,8 @@
 @property (nonatomic) CLLocationCoordinate2D currentLocationCoordinate;
 @property (nonatomic, strong) PFGeoPoint *currentGeoPoint;
 
+@property (nonatomic, strong) ANDMViewController *ANDMSearchController;
+
 @end
 
 @implementation FeatureBaseViewController
@@ -45,18 +48,18 @@
 
     [self configureSearchController];
 
-    self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager requestWhenInUseAuthorization];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-
-    [self.locationManager startUpdatingLocation];
-
-    CLLocation *location = [self.locationManager location];
-
-    self.currentLocationCoordinate = [location coordinate];
-    self.currentGeoPoint = [PFGeoPoint geoPointWithLatitude:self.currentLocationCoordinate.latitude longitude:self.currentLocationCoordinate.longitude];
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    [self.locationManager requestWhenInUseAuthorization];
+//    self.locationManager.delegate = self;
+//    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//
+//    [self.locationManager startUpdatingLocation];
+//
+//    CLLocation *location = [self.locationManager location];
+//
+//    self.currentLocationCoordinate = [location coordinate];
+//    self.currentGeoPoint = [PFGeoPoint geoPointWithLatitude:self.currentLocationCoordinate.latitude longitude:self.currentLocationCoordinate.longitude];
 
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -77,6 +80,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager requestWhenInUseAuthorization];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
+    [self.locationManager startUpdatingLocation];
+
+    CLLocation *location = [self.locationManager location];
+
+    self.currentLocationCoordinate = [location coordinate];
+    self.currentGeoPoint = [PFGeoPoint geoPointWithLatitude:self.currentLocationCoordinate.latitude longitude:self.currentLocationCoordinate.longitude];
+
+    self.shouldShowSearchResults = NO;
+    [self.tableView reloadData];
 }
 
 - (id)initWithCoder:(NSCoder *)aCoder {
@@ -279,20 +298,14 @@
     cell.dateUntilNowLabel.text = [eventDate dateTimeUntilNow];
 }
 
-#pragma mark - UISearchBarDelegate
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+#pragma mark - ANDMViewControllerDelegate
+- (void)didStartSearching
 {
     self.shouldShowSearchResults = YES;
     [self.tableView reloadData];
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    self.shouldShowSearchResults = NO;
-    [self.tableView reloadData];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)didTapOnSearchButton
 {
     if (!self.shouldShowSearchResults) {
         self.shouldShowSearchResults = YES;
@@ -301,36 +314,92 @@
 
     [self.searchController.searchBar resignFirstResponder];
     [self.searchController setActive:NO];
+
 }
 
-#pragma mark - UISearchResultsUpdating
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+- (void)didTapOnCancelButton
+{
+    self.shouldShowSearchResults = NO;
+    [self.tableView reloadData];
+
+}
+
+- (void)didChangeSearchText:(NSString *)searchText
 {
     NSMutableArray *temporaryFilteredArray = [@[] mutableCopy];
 
-    if (searchController.searchBar.text.length > 0) {
+    if (searchText > 0) {
         PFQuery *query = [Page query];
-        [query whereKey:@"pageName" containsString:searchController.searchBar.text];
+        [query whereKey:@"pageName" containsString:searchText];
         [query whereKey:@"location" nearGeoPoint:self.currentGeoPoint withinMiles:20];
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             [temporaryFilteredArray addObjectsFromArray:objects];
             [self.tableView reloadData];
         }];
-        
+
         self.filteredArray = temporaryFilteredArray;
         [self.tableView reloadData];
     }
 }
 
+
+#pragma mark - UISearchBarDelegate
+//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+//{
+//    self.shouldShowSearchResults = YES;
+//    [self.tableView reloadData];
+//}
+//
+//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+//{
+//    self.shouldShowSearchResults = NO;
+//    [self.tableView reloadData];
+//}
+//
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+//{
+//    if (!self.shouldShowSearchResults) {
+//        self.shouldShowSearchResults = YES;
+//        [self.tableView reloadData];
+//    }
+//
+//    [self.searchController.searchBar resignFirstResponder];
+//    [self.searchController setActive:NO];
+//}
+
+#pragma mark - UISearchResultsUpdating
+//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+//{
+//    NSMutableArray *temporaryFilteredArray = [@[] mutableCopy];
+//
+//    if (self.ANDMSearchController.searchBar.text.length > 0) {
+//        PFQuery *query = [Page query];
+//        [query whereKey:@"pageName" containsString:self.ANDMSearchController.searchBar.text];
+//        [query whereKey:@"location" nearGeoPoint:self.currentGeoPoint withinMiles:20];
+//        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//            [temporaryFilteredArray addObjectsFromArray:objects];
+//            [self.tableView reloadData];
+//        }];
+//
+//        self.filteredArray = temporaryFilteredArray;
+//        [self.tableView reloadData];
+//    }
+//}
+
 - (void)configureSearchController
 {
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchController.dimsBackgroundDuringPresentation = YES;
-    self.searchController.searchBar.placeholder = @"Search here";
-    self.searchController.searchResultsUpdater = self;
-    self.searchController.searchBar.delegate = self;
-    [self.searchController.searchBar sizeToFit];
-    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.ANDMSearchController = [[ANDMViewController alloc] initWithResultsController:self searchBarFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 50.0) searchBarFont:[UIFont fontWithName:@"Futura" size:16.0] searchBarTextColor:[UIColor orangeColor] andSearchBarTintColor:[UIColor blackColor]];
+
+    self.ANDMSearchController.ANDMSearchBar.placeholder = @"Search here";
+    self.ANDMSearchController.customDelegate = self;
+    self.tableView.tableHeaderView = self.ANDMSearchController.ANDMSearchBar;
+//    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+//    self.searchController.dimsBackgroundDuringPresentation = YES;
+//    self.searchController.searchBar.placeholder = @"Search here";
+//    self.searchController.searchResultsUpdater = self;
+//    self.searchController.searchBar.delegate = self;
+//    [self.searchController.searchBar sizeToFit];
+//    self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -339,8 +408,8 @@
     currentLocation = [locations objectAtIndex:0];
     [self.locationManager stopUpdatingLocation];
 
-//    NSLog(@"my latitude :%f",currentLocation.coordinate.latitude);
-//    NSLog(@"my longitude :%f",currentLocation.coordinate.longitude);
+    NSLog(@"my latitude :%f",currentLocation.coordinate.latitude);
+    NSLog(@"my longitude :%f",currentLocation.coordinate.longitude);
 }
 
 @end
