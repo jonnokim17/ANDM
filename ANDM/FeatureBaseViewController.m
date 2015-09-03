@@ -17,12 +17,22 @@
 #import "ANDMDetailViewController.h"
 #import "NSDate+TimeAgo.h"
 
-@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface FeatureBaseViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchBarDelegate>
+{
+    CLLocation *currentLocation;
+}
 
 @property (nonatomic, strong) ANDMLoginViewController *ANDMLoginViewController;
 @property CLLocationManager *locationManager;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
+
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSMutableArray *filteredArray;
+@property (nonatomic) BOOL shouldShowSearchResults;
+
+@property (nonatomic) CLLocationCoordinate2D currentLocationCoordinate;
+@property (nonatomic, strong) PFGeoPoint *currentGeoPoint;
 
 @end
 
@@ -31,9 +41,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.shouldShowSearchResults = NO;
+
+    [self configureSearchController];
+
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
     self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
+    [self.locationManager startUpdatingLocation];
+
+    CLLocation *location = [self.locationManager location];
+
+    self.currentLocationCoordinate = [location coordinate];
+    self.currentGeoPoint = [PFGeoPoint geoPointWithLatitude:self.currentLocationCoordinate.latitude longitude:self.currentLocationCoordinate.longitude];
 
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -54,7 +77,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
 }
 
 - (id)initWithCoder:(NSCoder *)aCoder {
@@ -88,6 +110,7 @@
     return query;
 }
 
+#pragma mark - UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object
 {
     static NSString *simpleTableIdentifier = @"cell";
@@ -96,47 +119,48 @@
     if (cell == nil) {
         cell = [[MainFeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    // Configure the cell
-    NSString *eventName = [object objectForKey:@"pageName"];
-    cell.eventTitleLabel.text = eventName;
+    if (self.shouldShowSearchResults) {
 
-    PFFile *eventImageFile = [object objectForKey:@"image"];
-    if (eventImageFile) {
-        cell.eventImage.file = eventImageFile;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [cell.eventImage loadInBackground];
-        });
+        if (self.filteredArray.count > 0) {
+            Page *page = self.filteredArray[indexPath.row];
+            [self loadTableViewCells:cell withPage:page];
+        }
+
     } else {
-        NSLog(@"ERROR");
+        Page *page = self.objects[indexPath.row];
+        [self loadTableViewCells:cell withPage:page];
     }
 
-    NSString *hashtag = [object objectForKey:@"hashtag"];
-    NSMutableString *hashtagString = [NSMutableString stringWithString:hashtag];
-
-    [hashtagString insertString:@"#" atIndex:0];
-
-    cell.hashtagLabel.text = hashtagString;
-
-    NSDate *eventDate = [object objectForKey:@"date"];
-    cell.dateUntilNowLabel.text = [eventDate dateTimeUntilNow];
-
     return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (self.shouldShowSearchResults) {
+        return self.filteredArray.count;
+    } else {
+        return [self.objects count];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        PFObject *object = self.objects[indexPath.row];
 
-        ANDMDetailViewController *detailVC = segue.destinationViewController;
-        detailVC.selectedPage = (Page *)object;
+        if (!self.shouldShowSearchResults) {
+            PFObject *object = self.objects[indexPath.row];
+            ANDMDetailViewController *detailVC = segue.destinationViewController;
+            detailVC.selectedPage = (Page *)object;
+        } else {
+            PFObject *object = self.filteredArray[indexPath.row];
+            ANDMDetailViewController *detailVC = segue.destinationViewController;
+            detailVC.selectedPage = (Page *)object;
+        }
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -228,6 +252,95 @@
     [alert addAction:okButton];
     
     [alert show];
+}
+
+- (void)loadTableViewCells:(MainFeedTableViewCell *)cell withPage:(Page *)page
+{
+    cell.eventTitleLabel.text = page.pageName;
+
+    PFFile *eventImageFile = page.image;
+    if (eventImageFile) {
+        cell.eventImage.file = eventImageFile;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.eventImage loadInBackground];
+        });
+    } else {
+        NSLog(@"ERROR");
+    }
+
+    NSString *hashtag = page.hashtag;
+    NSMutableString *hashtagString = [NSMutableString stringWithString:hashtag];
+
+    [hashtagString insertString:@"#" atIndex:0];
+
+    cell.hashtagLabel.text = hashtagString;
+
+    NSDate *eventDate = page.date;
+    cell.dateUntilNowLabel.text = [eventDate dateTimeUntilNow];
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    self.shouldShowSearchResults = YES;
+    [self.tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.shouldShowSearchResults = NO;
+    [self.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if (!self.shouldShowSearchResults) {
+        self.shouldShowSearchResults = YES;
+        [self.tableView reloadData];
+    }
+
+    [self.searchController.searchBar resignFirstResponder];
+    [self.searchController setActive:NO];
+}
+
+#pragma mark - UISearchResultsUpdating
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSMutableArray *temporaryFilteredArray = [@[] mutableCopy];
+
+    if (searchController.searchBar.text.length > 0) {
+        PFQuery *query = [Page query];
+        [query whereKey:@"pageName" containsString:searchController.searchBar.text];
+        [query whereKey:@"location" nearGeoPoint:self.currentGeoPoint withinMiles:20];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            [temporaryFilteredArray addObjectsFromArray:objects];
+            [self.tableView reloadData];
+        }];
+        
+        self.filteredArray = temporaryFilteredArray;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)configureSearchController
+{
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.dimsBackgroundDuringPresentation = YES;
+    self.searchController.searchBar.placeholder = @"Search here";
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.delegate = self;
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+}
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+{
+    currentLocation = [locations objectAtIndex:0];
+    [self.locationManager stopUpdatingLocation];
+
+//    NSLog(@"my latitude :%f",currentLocation.coordinate.latitude);
+//    NSLog(@"my longitude :%f",currentLocation.coordinate.longitude);
 }
 
 @end
