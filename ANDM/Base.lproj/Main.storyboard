@@ -609,19 +609,67 @@
                                     <outlet property="delegate" destination="uQw-5U-7Gh" id="mXL-8V-qgq"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqN-Ev-cTW">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aRy-u6-JVs">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="uQw-5U-7Gh" id="4Zg-4o-kGt"/>
+                                        </connections>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aRy-u6-JVs" secondAttribute="bottom" id="9aO-61-4JC"/>
+                                    <constraint firstAttribute="trailing" secondItem="aRy-u6-JVs" secondAttribute="trailing" id="GR7-sf-O4g"/>
+                                    <constraint firstItem="aRy-u6-JVs" firstAttribute="leading" secondItem="uqN-Ev-cTW" secondAttribute="leading" id="L1Y-NK-oj9"/>
+                                    <constraint firstItem="aRy-u6-JVs" firstAttribute="top" secondItem="uqN-Ev-cTW" secondAttribute="top" id="LmV-Cp-sHc"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSn-HO-hj9">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="0Lf-3C-81F">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="811-8g-scX">
+                                            <rect key="frame" x="20" y="7.5" width="121" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="First"/>
+                                                <segment title="Second"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="onSegmentedControl:" destination="uQw-5U-7Gh" eventType="valueChanged" id="htz-h2-cgD"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="uQw-5U-7Gh" id="bRL-dh-0uf"/>
+                                </connections>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uqN-Ev-cTW" firstAttribute="bottom" secondItem="GqX-yz-XVa" secondAttribute="top" id="6nP-UY-fQg"/>
+                            <constraint firstItem="uqN-Ev-cTW" firstAttribute="leading" secondItem="Bfx-KG-joN" secondAttribute="leading" id="97n-l4-00T"/>
                             <constraint firstItem="Uha-GY-Vs1" firstAttribute="top" secondItem="Bfx-KG-joN" secondAttribute="top" id="D7S-dN-3FJ"/>
                             <constraint firstItem="GqX-yz-XVa" firstAttribute="top" secondItem="Uha-GY-Vs1" secondAttribute="bottom" id="H7B-bu-tur"/>
                             <constraint firstItem="Uha-GY-Vs1" firstAttribute="leading" secondItem="Bfx-KG-joN" secondAttribute="leading" id="TOl-o9-ISh"/>
+                            <constraint firstItem="uqN-Ev-cTW" firstAttribute="top" secondItem="Bfx-KG-joN" secondAttribute="top" constant="108" id="djf-PT-e77"/>
+                            <constraint firstItem="uqN-Ev-cTW" firstAttribute="trailing" secondItem="nSn-HO-hj9" secondAttribute="trailing" id="nmc-xe-WaY"/>
+                            <constraint firstItem="uqN-Ev-cTW" firstAttribute="top" secondItem="nSn-HO-hj9" secondAttribute="bottom" id="uCm-yq-esM"/>
+                            <constraint firstItem="uqN-Ev-cTW" firstAttribute="leading" secondItem="nSn-HO-hj9" secondAttribute="leading" id="uHD-DE-xuH"/>
                             <constraint firstAttribute="trailing" secondItem="Uha-GY-Vs1" secondAttribute="trailing" id="vbG-oW-WMc"/>
+                            <constraint firstAttribute="trailing" secondItem="uqN-Ev-cTW" secondAttribute="trailing" id="whF-aE-0qy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="44d-uH-nDk">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="IO3-ST-JZx"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="aRy-u6-JVs" id="btg-9y-o6s"/>
+                        <outlet property="secondView" destination="uqN-Ev-cTW" id="JTI-Cn-fxy"/>
                         <outlet property="sidebarButton" destination="IO3-ST-JZx" id="WgI-fw-xzg"/>
                         <outlet property="tableView" destination="Uha-GY-Vs1" id="KGg-xS-cGG"/>
                     </connections>
@@ -710,6 +758,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bhJ-NZ-RBS"/>
-        <segue reference="rLY-hZ-yVX"/>
+        <segue reference="SDs-nt-njW"/>
     </inferredMetricsTieBreakers>
 </document>
