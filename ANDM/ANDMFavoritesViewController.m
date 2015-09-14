@@ -177,13 +177,11 @@
 {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            NSLog(@"first index");
             self.tableView.hidden = NO;
             self.secondView.hidden = YES;
             break;
 
         case 1:
-            NSLog(@"second index");
             self.tableView.hidden = YES;
             self.secondView.hidden = NO;
 
@@ -194,7 +192,6 @@
                 annotation.title = page.pageName;
                 [self.mapView addAnnotation:annotation];
             }
-
             break;
 
         default:

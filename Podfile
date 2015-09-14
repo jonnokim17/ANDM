@@ -5,6 +5,7 @@ pod 'Parse','~>1.8.1'
 pod 'ParseUI','~>1.1.3'
 pod 'NSDate+TimeAgo'
 pod 'SVProgressHUD'
+pod 'BDBOAuth1Manager'
 
 target 'ANDM' do
 

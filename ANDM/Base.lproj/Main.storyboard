@@ -396,7 +396,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9x-45-Hgc" id="mIv-eN-zWX">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ra-gu-jBy">
@@ -430,13 +430,24 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16b-fe-5gK">
+                                                    <rect key="frame" x="17" y="67" width="527" height="128"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yUD-2u-3dj" firstAttribute="leading" secondItem="Vlc-kg-E7D" secondAttribute="leading" id="FEM-GQ-J7w"/>
                                                 <constraint firstItem="yUD-2u-3dj" firstAttribute="leading" secondItem="aYz-Ca-J1F" secondAttribute="leading" id="KQ0-X3-0rE"/>
                                                 <constraint firstItem="yUD-2u-3dj" firstAttribute="centerY" secondItem="0Ra-gu-jBy" secondAttribute="centerY" id="MK6-KA-GU7"/>
+                                                <constraint firstItem="16b-fe-5gK" firstAttribute="leading" secondItem="mIv-eN-zWX" secondAttribute="leadingMargin" constant="9" id="MS3-iS-YV7"/>
+                                                <constraint firstItem="16b-fe-5gK" firstAttribute="top" secondItem="yUD-2u-3dj" secondAttribute="bottom" constant="19" id="Pz9-gx-oJS"/>
                                                 <constraint firstItem="yUD-2u-3dj" firstAttribute="top" secondItem="mIv-eN-zWX" secondAttribute="topMargin" id="Swh-j0-svN"/>
+                                                <constraint firstItem="16b-fe-5gK" firstAttribute="centerX" secondItem="mIv-eN-zWX" secondAttribute="centerX" id="Uwj-Bf-0iZ"/>
                                                 <constraint firstItem="Vlc-kg-E7D" firstAttribute="trailing" secondItem="vR7-5C-wCM" secondAttribute="trailing" id="W1R-bc-OeS"/>
+                                                <constraint firstItem="16b-fe-5gK" firstAttribute="centerY" secondItem="Vlc-kg-E7D" secondAttribute="centerY" id="WDV-By-uWa"/>
                                                 <constraint firstItem="yUD-2u-3dj" firstAttribute="leading" secondItem="mIv-eN-zWX" secondAttribute="leadingMargin" id="aaM-3Z-taq"/>
                                                 <constraint firstItem="yUD-2u-3dj" firstAttribute="centerY" secondItem="vR7-5C-wCM" secondAttribute="centerY" id="dVJ-Ol-5N6"/>
                                                 <constraint firstItem="aYz-Ca-J1F" firstAttribute="top" secondItem="Vlc-kg-E7D" secondAttribute="bottom" constant="8" symbolic="YES" id="n2w-9E-9Ox"/>
@@ -453,6 +464,7 @@
                                             <outlet property="contentImageView" destination="Vlc-kg-E7D" id="IrU-4e-wej"/>
                                             <outlet property="tagLabel" destination="aYz-Ca-J1F" id="6rX-FK-Ogc"/>
                                             <outlet property="timeStampLabel" destination="vR7-5C-wCM" id="q0t-sw-LM1"/>
+                                            <outlet property="twitterTextView" destination="16b-fe-5gK" id="jSR-a9-uSf"/>
                                             <outlet property="usernameLabel" destination="0Ra-gu-jBy" id="g9X-5L-aF8"/>
                                             <outlet property="userprofileImageView" destination="yUD-2u-3dj" id="mbJ-l7-S17"/>
                                         </connections>
@@ -630,9 +642,10 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSn-HO-hj9">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="68P-St-coU"/>
                                     <barButtonItem style="plain" id="0Lf-3C-81F">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="811-8g-scX">
-                                            <rect key="frame" x="20" y="7.5" width="121" height="29"/>
+                                            <rect key="frame" x="239" y="7.5" width="121" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="First"/>
@@ -643,6 +656,7 @@
                                             </connections>
                                         </segmentedControl>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ooU-Pc-msD"/>
                                 </items>
                                 <connections>
                                     <outlet property="delegate" destination="uQw-5U-7Gh" id="bRL-dh-0uf"/>

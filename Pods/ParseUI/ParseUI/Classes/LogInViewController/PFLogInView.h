@@ -53,7 +53,8 @@ typedef NS_OPTIONS(NSInteger, PFLogInFields) {
     PFLogInFieldsDefault = (PFLogInFieldsUsernameAndPassword |
                             PFLogInFieldsLogInButton |
                             PFLogInFieldsSignUpButton |
-                            PFLogInFieldsPasswordForgotten)
+                            PFLogInFieldsPasswordForgotten |
+                            PFLogInFieldsDismissButton)
 };
 
 @class PFTextField;

@@ -27,6 +27,8 @@
 		9067A5C61B97EE8F0015DA3E /* ANDMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9067A5C51B97EE8F0015DA3E /* ANDMViewController.m */; };
 		906D12FA1B9001400076D873 /* ANDMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D12F91B9001400076D873 /* ANDMFavoritesViewController.m */; };
 		907440AA1B8BE19E0014CF16 /* ANDMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */; };
+		90A4609A1BA74110008C1D58 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A460991BA74110008C1D58 /* TwitterClient.m */; };
+		90A4609D1BA7436E008C1D58 /* TwitterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A4609C1BA7436E008C1D58 /* TwitterData.m */; };
 		90D24F801B9230FC00EC5B9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D24F7F1B9230FC00EC5B9F /* CoreLocation.framework */; };
 		90DA3D801B8FD214003DDC3C /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 90DA3D7F1B8FD214003DDC3C /* Favorite.m */; };
 		90EA6CC71B8A6E34009CDB18 /* ANDMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EA6CC61B8A6E34009CDB18 /* ANDMCreateEventViewController.m */; };
@@ -86,6 +88,10 @@
 		906D12F91B9001400076D873 /* ANDMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMFavoritesViewController.m; sourceTree = "<group>"; };
 		907440A81B8BE19E0014CF16 /* ANDMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANDMDetailViewController.h; sourceTree = "<group>"; };
 		907440A91B8BE19E0014CF16 /* ANDMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANDMDetailViewController.m; sourceTree = "<group>"; };
+		90A460981BA74110008C1D58 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
+		90A460991BA74110008C1D58 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
+		90A4609B1BA7436E008C1D58 /* TwitterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterData.h; sourceTree = "<group>"; };
+		90A4609C1BA7436E008C1D58 /* TwitterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterData.m; sourceTree = "<group>"; };
 		90D24F7F1B9230FC00EC5B9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90DA3D7E1B8FD214003DDC3C /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		90DA3D7F1B8FD214003DDC3C /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
@@ -239,6 +245,10 @@
 				90DA3D7F1B8FD214003DDC3C /* Favorite.m */,
 				900D2FA21B8D3FD20092CF4A /* InstagramData.h */,
 				900D2FA31B8D3FD20092CF4A /* InstagramData.m */,
+				90A460981BA74110008C1D58 /* TwitterClient.h */,
+				90A460991BA74110008C1D58 /* TwitterClient.m */,
+				90A4609B1BA7436E008C1D58 /* TwitterData.h */,
+				90A4609C1BA7436E008C1D58 /* TwitterData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,11 +419,13 @@
 				90625B6B1B8A4B800082AA7E /* ANDMLoginViewController.m in Sources */,
 				90DA3D801B8FD214003DDC3C /* Favorite.m in Sources */,
 				90625B741B8A55620082AA7E /* UIAlertController+Window.m in Sources */,
+				90A4609D1BA7436E008C1D58 /* TwitterData.m in Sources */,
 				900052EA1B8A3F27005367A7 /* AppDelegate.m in Sources */,
 				906D12FA1B9001400076D873 /* ANDMFavoritesViewController.m in Sources */,
 				9067A5C31B97E86D0015DA3E /* ANDMSearchBar.m in Sources */,
 				902B87161B8AA0EC00E6F58E /* MainFeedTableViewCell.m in Sources */,
 				9067A5C61B97EE8F0015DA3E /* ANDMViewController.m in Sources */,
+				90A4609A1BA74110008C1D58 /* TwitterClient.m in Sources */,
 				900052E71B8A3F27005367A7 /* main.m in Sources */,
 				900D2FA41B8D3FD20092CF4A /* InstagramData.m in Sources */,
 				900D2FA71B8D4F3A0092CF4A /* InstagramTableViewCell.m in Sources */,

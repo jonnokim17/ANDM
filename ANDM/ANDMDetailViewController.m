@@ -12,6 +12,7 @@
 #import "InstagramTableViewCell.h"
 #import "SVProgressHUD.h"
 #import "Favorite.h"
+#import "TwitterData.h"
 
 @interface ANDMDetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -27,6 +28,7 @@
 
 @property MKPointAnnotation *eventAnnotation;
 @property (strong, nonatomic) NSArray *instagramData;
+@property (strong, nonatomic) NSArray *twitterData;
 
 @end
 
@@ -36,6 +38,10 @@
     [super viewDidLoad];
 
     self.navigationItem.title = @"ANDM";
+
+    [TwitterData getSearchResultsWithHashtag:self.selectedPage.hashtag withCompletion:^(NSArray *twitterArray) {
+        self.twitterData = twitterArray;
+    }];
 
     [InstagramData retrieveVideoInformation:self.selectedPage.hashtag andWithCompletion:^(NSArray *data, NSError *error) {
         if (!error) {
@@ -142,7 +148,11 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.instagramData.count;
+    if (section == 0) {
+        return self.instagramData.count;
+    } else {
+        return self.twitterData.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -150,28 +160,56 @@
     InstagramTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    InstagramData *instagramData = self.instagramData[indexPath.row];
+    if (indexPath.section == 0) {
+        InstagramData *instagramData = self.instagramData[indexPath.row];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        cell.usernameLabel.text = instagramData.username;
-        cell.tagLabel.text = [instagramData.tags componentsJoinedByString:@", "];
-        cell.timeStampLabel.text = instagramData.timeStamp;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.usernameLabel.text = instagramData.username;
+            cell.tagLabel.text = [instagramData.tags componentsJoinedByString:@", "];
+            cell.timeStampLabel.text = instagramData.timeStamp;
+            cell.twitterTextView.hidden = YES;
 
-        cell.userprofileImageView.image = [UIImage imageWithData:instagramData.userProfileImageData];
-        cell.userprofileImageView.alpha = 0.0f;
+            cell.userprofileImageView.image = [UIImage imageWithData:instagramData.userProfileImageData];
+            cell.userprofileImageView.alpha = 0.0f;
 
-        cell.contentImageView.image = [UIImage imageWithData:instagramData.contentImageData];
-        cell.contentImageView.alpha = 0.0f;
+            cell.contentImageView.image = [UIImage imageWithData:instagramData.contentImageData];
+            cell.contentImageView.alpha = 0.0f;
 
-        [UIView animateWithDuration:0.5f animations:^{
-            cell.userprofileImageView.alpha = 1.0f;
-            cell.contentImageView.alpha = 1.0f;
-        }];
+            [UIView animateWithDuration:0.5f animations:^{
+                cell.userprofileImageView.alpha = 1.0f;
+                cell.contentImageView.alpha = 1.0f;
+            }];
+        });
+    } else {
+        TwitterData *twitterData = self.twitterData[indexPath.row];
 
-        [SVProgressHUD dismiss];
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.usernameLabel.text = twitterData.name;
+            cell.userprofileImageView.image = [UIImage imageWithData:twitterData.userProfileImageData];
+            cell.timeStampLabel.text = twitterData.timeStamp;
+            cell.contentImageView.image = nil;
+            cell.twitterTextView.hidden = NO;
+            cell.twitterTextView.text = twitterData.text;
+            cell.tagLabel.text = nil;
+        });
+    }
+
+    [SVProgressHUD dismiss];
 
     return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+        return @"Instagram";
+    else
+        return @"Twitter";
 }
 
 #pragma mark - UITableViewDelegate
