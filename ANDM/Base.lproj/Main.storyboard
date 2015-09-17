@@ -432,8 +432,9 @@
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16b-fe-5gK">
                                                     <rect key="frame" x="17" y="67" width="527" height="128"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.27450980392156865" green="0.60392156862745094" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -506,9 +507,19 @@
                                     <outletCollection property="gestureRecognizers" destination="qbQ-bx-z2X" appends="YES" id="5uh-Oo-jGE"/>
                                 </connections>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posts/Hr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K76-BQ-95B">
+                                <rect key="frame" x="460" y="106" width="120" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="2rO-R1-cDk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uKk-ec-3p7" firstAttribute="top" secondItem="K76-BQ-95B" secondAttribute="bottom" constant="8" symbolic="YES" id="488-kU-B9U"/>
                             <constraint firstItem="RVu-YK-qs1" firstAttribute="trailing" secondItem="uKk-ec-3p7" secondAttribute="trailing" constant="-58" id="4hL-Ch-r2j"/>
                             <constraint firstItem="dXl-e3-bPl" firstAttribute="leading" secondItem="rU1-xd-S5e" secondAttribute="leading" id="50Q-uM-U4L"/>
                             <constraint firstItem="zEu-NG-MAl" firstAttribute="top" secondItem="rU1-xd-S5e" secondAttribute="bottom" constant="16" id="5cM-CV-lIa"/>
@@ -525,11 +536,13 @@
                             <constraint firstItem="11M-Mz-IcQ" firstAttribute="bottom" secondItem="Cga-i1-PZA" secondAttribute="top" id="QSL-Ia-kpW"/>
                             <constraint firstItem="11M-Mz-IcQ" firstAttribute="leading" secondItem="zEu-NG-MAl" secondAttribute="leading" id="R33-wM-AqE"/>
                             <constraint firstItem="rU1-xd-S5e" firstAttribute="top" secondItem="dXl-e3-bPl" secondAttribute="bottom" constant="8" id="RBu-DC-J7o"/>
+                            <constraint firstItem="K76-BQ-95B" firstAttribute="top" secondItem="kYs-h5-Oox" secondAttribute="bottom" constant="3" id="SfQ-mt-Bbv"/>
                             <constraint firstItem="uKk-ec-3p7" firstAttribute="top" secondItem="RVu-YK-qs1" secondAttribute="bottom" constant="13" id="VOq-98-jGk"/>
                             <constraint firstItem="uKk-ec-3p7" firstAttribute="top" secondItem="rU1-xd-S5e" secondAttribute="bottom" constant="3" id="XsO-ZO-qhf"/>
                             <constraint firstItem="zEu-NG-MAl" firstAttribute="centerX" secondItem="INi-DW-A5J" secondAttribute="centerX" id="Yeb-E4-hkR"/>
                             <constraint firstItem="11M-Mz-IcQ" firstAttribute="top" secondItem="zEu-NG-MAl" secondAttribute="bottom" constant="8" id="Yf5-rY-Sty"/>
                             <constraint firstItem="RVu-YK-qs1" firstAttribute="trailing" secondItem="rU1-xd-S5e" secondAttribute="trailing" constant="-58" id="Yoc-gG-TQZ"/>
+                            <constraint firstItem="K76-BQ-95B" firstAttribute="trailing" secondItem="rU1-xd-S5e" secondAttribute="trailing" id="ZAV-TM-XT1"/>
                             <constraint firstItem="zEu-NG-MAl" firstAttribute="top" secondItem="INi-DW-A5J" secondAttribute="top" constant="155" id="aMF-9V-AJq"/>
                             <constraint firstItem="rU1-xd-S5e" firstAttribute="top" secondItem="RVu-YK-qs1" secondAttribute="bottom" constant="6" id="ayK-MN-rr8"/>
                             <constraint firstItem="dXl-e3-bPl" firstAttribute="leading" secondItem="uKk-ec-3p7" secondAttribute="leading" id="dd9-Be-vPQ"/>
@@ -560,6 +573,7 @@
                         <outlet property="favoriteStar" destination="kYs-h5-Oox" id="XdM-yZ-oUf"/>
                         <outlet property="hashtagLabel" destination="RVu-YK-qs1" id="1XJ-QD-Crj"/>
                         <outlet property="mapView" destination="zEu-NG-MAl" id="3s5-T9-SHL"/>
+                        <outlet property="postsPerHourLabel" destination="K76-BQ-95B" id="KtD-2t-0O4"/>
                         <outlet property="tableView" destination="11M-Mz-IcQ" id="AbR-0S-86K"/>
                     </connections>
                 </viewController>
@@ -645,11 +659,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="68P-St-coU"/>
                                     <barButtonItem style="plain" id="0Lf-3C-81F">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="811-8g-scX">
-                                            <rect key="frame" x="239" y="7.5" width="121" height="29"/>
+                                            <rect key="frame" x="239" y="7" width="121" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="First"/>
-                                                <segment title="Second"/>
+                                                <segment title="LIST"/>
+                                                <segment title="MAP"/>
                                             </segments>
                                             <connections>
                                                 <action selector="onSegmentedControl:" destination="uQw-5U-7Gh" eventType="valueChanged" id="htz-h2-cgD"/>
@@ -772,6 +786,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bhJ-NZ-RBS"/>
-        <segue reference="SDs-nt-njW"/>
+        <segue reference="rLY-hZ-yVX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,9 +14,8 @@
 @property (strong, nonatomic) NSData *userProfileImageData;
 @property (strong, nonatomic) NSString *timeStamp;
 @property (strong, nonatomic) NSString *text;
-//@property (strong, nonatomic) NSString *hashtags;
-//@property (nonatomic, strong) NSURL *twitterURL;
 
-+ (void)getSearchResultsWithHashtag:(NSString *)hashtag withCompletion:(void(^)(NSArray *))complete;
++ (void)getSearchResultsWithHashtag:(NSString *)hashtag withCompletion:(void(^)(NSArray *data, NSError *error))complete;
++ (void)getTwitterRecentPostsCount:(NSString *)hashtag withCompletion:(void(^)(int postsPerHour, NSError *error))complete;
 
 @end

@@ -23,12 +23,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteStar;
+@property (weak, nonatomic) IBOutlet UILabel *postsPerHourLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property MKPointAnnotation *eventAnnotation;
 @property (strong, nonatomic) NSArray *instagramData;
 @property (strong, nonatomic) NSArray *twitterData;
+
+@property (nonatomic) int twitterPostsPerHour;
+@property (nonatomic) int instagramPostsPerHour;
 
 @end
 
@@ -39,11 +43,37 @@
 
     self.navigationItem.title = @"ANDM";
 
-    [TwitterData getSearchResultsWithHashtag:self.selectedPage.hashtag withCompletion:^(NSArray *twitterArray) {
-        self.twitterData = twitterArray;
+    [TwitterData getTwitterRecentPostsCount:self.selectedPage.hashtag withCompletion:^(int postsPerHour, NSError *error) {
+
+        if (!error) {
+            self.twitterPostsPerHour = postsPerHour;
+
+            [InstagramData getInstagramRecentPostsCount:self.selectedPage.hashtag withCompletion:^(int postsPerHour, NSError *error) {
+
+                if (!error) {
+                    self.instagramPostsPerHour = postsPerHour;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.postsPerHourLabel.text = [NSString stringWithFormat:@"%d Posts/Hr", self.twitterPostsPerHour + self.instagramPostsPerHour];
+                    });
+                } else {
+                    NSLog(@"%@", error.description);
+                }
+            }];
+
+        } else {
+            NSLog(@"%@", error.description);
+        }
     }];
 
-    [InstagramData retrieveVideoInformation:self.selectedPage.hashtag andWithCompletion:^(NSArray *data, NSError *error) {
+    [TwitterData getSearchResultsWithHashtag:self.selectedPage.hashtag withCompletion:^(NSArray *twitterData, NSError *error) {
+        if (!error) {
+            self.twitterData = twitterData;
+        } else {
+            NSLog(@"%@", error.description);
+        }
+    }];
+
+    [InstagramData getInstagramInformation:self.selectedPage.hashtag andWithCompletion:^(NSArray *data, NSError *error) {
         if (!error) {
             self.instagramData = data;
         } else {

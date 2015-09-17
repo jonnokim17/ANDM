@@ -111,28 +111,6 @@
     [SVProgressHUD show];
 }
 
-//- (void)configureSegmentedControl
-//{
-//    NSArray *itemArray = [NSArray arrayWithObjects: @"LIST", @"MAP", nil];
-//    UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:itemArray];
-//    [control setFrame:CGRectMake(60.0, 0, 100.0, 40.0)];
-//    [control addTarget:self action:@selector(segmentedControlHasChangedValue:) forControlEvents:UIControlEventValueChanged];
-//    [control setSelectedSegmentIndex:0];
-//    [control setEnabled:YES];
-//    self.tableView.tableHeaderView = control;
-//}
-
-//- (void)segmentedControlHasChangedValue:(id)sender
-//{
-//    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-//
-//    if (segmentedControl.selectedSegmentIndex == 0) {
-//        //
-//    } else if (segmentedControl.selectedSegmentIndex == 1) {
-//        //
-//    }
-//}
-
 #pragma Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -342,50 +342,6 @@
     }
 }
 
-
-#pragma mark - UISearchBarDelegate
-//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-//{
-//    self.shouldShowSearchResults = YES;
-//    [self.tableView reloadData];
-//}
-//
-//- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-//{
-//    self.shouldShowSearchResults = NO;
-//    [self.tableView reloadData];
-//}
-//
-//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-//{
-//    if (!self.shouldShowSearchResults) {
-//        self.shouldShowSearchResults = YES;
-//        [self.tableView reloadData];
-//    }
-//
-//    [self.searchController.searchBar resignFirstResponder];
-//    [self.searchController setActive:NO];
-//}
-
-#pragma mark - UISearchResultsUpdating
-//- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-//{
-//    NSMutableArray *temporaryFilteredArray = [@[] mutableCopy];
-//
-//    if (self.ANDMSearchController.searchBar.text.length > 0) {
-//        PFQuery *query = [Page query];
-//        [query whereKey:@"pageName" containsString:self.ANDMSearchController.searchBar.text];
-//        [query whereKey:@"location" nearGeoPoint:self.currentGeoPoint withinMiles:20];
-//        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-//            [temporaryFilteredArray addObjectsFromArray:objects];
-//            [self.tableView reloadData];
-//        }];
-//
-//        self.filteredArray = temporaryFilteredArray;
-//        [self.tableView reloadData];
-//    }
-//}
-
 - (void)configureSearchController
 {
     self.ANDMSearchController = [[ANDMViewController alloc] initWithResultsController:self searchBarFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 50.0) searchBarFont:[UIFont fontWithName:@"Futura" size:16.0] searchBarTextColor:[UIColor orangeColor] andSearchBarTintColor:[UIColor blackColor]];
@@ -393,13 +349,6 @@
     self.ANDMSearchController.ANDMSearchBar.placeholder = @"Search here";
     self.ANDMSearchController.customDelegate = self;
     self.tableView.tableHeaderView = self.ANDMSearchController.ANDMSearchBar;
-//    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-//    self.searchController.dimsBackgroundDuringPresentation = YES;
-//    self.searchController.searchBar.placeholder = @"Search here";
-//    self.searchController.searchResultsUpdater = self;
-//    self.searchController.searchBar.delegate = self;
-//    [self.searchController.searchBar sizeToFit];
-//    self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -407,9 +356,6 @@
 {
     currentLocation = [locations objectAtIndex:0];
     [self.locationManager stopUpdatingLocation];
-
-    NSLog(@"my latitude :%f",currentLocation.coordinate.latitude);
-    NSLog(@"my longitude :%f",currentLocation.coordinate.longitude);
 }
 
 @end

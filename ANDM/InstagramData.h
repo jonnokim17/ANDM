@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSData *contentImageData;
 
 - (instancetype)initWithDictionary:(NSDictionary *)instagramInfo;
-+ (void)retrieveVideoInformation:(NSString *)hastag andWithCompletion:(void(^)(NSArray *data, NSError *error))complete;
++ (void)getInstagramInformation:(NSString *)hashtag andWithCompletion:(void(^)(NSArray *data, NSError *error))complete;
++ (void)getInstagramRecentPostsCount:(NSString *)hashtag withCompletion:(void(^)(int postsPerHour, NSError *error))complete;
 
 @end

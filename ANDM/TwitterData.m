@@ -20,14 +20,9 @@
         self.name = twitterInfo[@"user"][@"name"];
         self.text = twitterInfo[@"text"];
 
-//        self.hashtags = twitterInfo[@"entities"][@"hashtags"][@"text"];
-
         NSString *imageURLString = twitterInfo[@"user"][@"profile_image_url"];
         NSURL *imageURL = [NSURL URLWithString:imageURLString];
         self.userProfileImageData = [NSData dataWithContentsOfURL:imageURL];
-
-//        NSString *urlString = twitterInfo[@"entities"][@"urls"][@"display_url"];
-//        self.twitterURL = [NSURL URLWithString:urlString];
 
         self.timeStamp = [self dateFromNumber:twitterInfo[@"created_at"]];
     }
@@ -35,7 +30,7 @@
     return self;
 }
 
-+ (void)getSearchResultsWithHashtag:(NSString *)hashtag withCompletion:(void(^)(NSArray *))complete
++ (void)getSearchResultsWithHashtag:(NSString *)hashtag withCompletion:(void(^)(NSArray *data, NSError *error))complete
 {
     [[TwitterClient sharedInstance] GET:[NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@&result_type=recent", hashtag]
                              parameters:nil
@@ -53,11 +48,46 @@
                                             i++;
                                         }
                                     }
-                                    complete(searchTweetsArray);
+                                    complete(searchTweetsArray, nil);
 
                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                     NSLog(@"search error");
-                                    complete(nil);
+                                    complete(nil, error);
+                                }];
+}
+
++ (void)getTwitterRecentPostsCount:(NSString *)hashtag withCompletion:(void(^)(int postsPerHour, NSError *error))complete
+{
+    [[TwitterClient sharedInstance] GET:[NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@&count=100", hashtag]
+                             parameters:nil
+                                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                    NSLog(@"search successful");
+
+                                    NSArray *statusesArray = responseObject[@"statuses"];
+
+                                    NSDateFormatter * df = [[NSDateFormatter alloc] init];
+                                    [df setDateFormat:@"EEE MMM d HH:mm:ss Z y"];
+
+                                    int recentPostCount = 0;
+
+                                    for (NSDictionary *dict in statusesArray) {
+                                        NSString *postDate = dict[@"created_at"];
+
+                                        NSDate *newDate = [df dateFromString:postDate];
+                                        NSTimeInterval postTimeInterval = [[NSDate date] timeIntervalSinceDate:newDate];
+
+                                        if (postTimeInterval <= 600.0) {
+                                            recentPostCount++;
+                                        }
+                                    }
+
+                                    int postsPerHour = recentPostCount * 6;
+
+                                    complete(postsPerHour, nil);
+
+                                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                    NSLog(@"search error");
+                                    complete(0, error);
                                 }];
 }
 

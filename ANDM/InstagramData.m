@@ -40,9 +40,9 @@ NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb80
     return self;
 }
 
-+ (void)retrieveVideoInformation:(NSString *)hastag andWithCompletion:(void(^)(NSArray *data, NSError *error))complete
++ (void)getInstagramInformation:(NSString *)hashtag andWithCompletion:(void(^)(NSArray *data, NSError *error))complete
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?access_token=%@", [hastag lowercaseString], kAccessToken]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?access_token=%@", [hashtag lowercaseString], kAccessToken]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -70,6 +70,49 @@ NSString * const kAccessToken = @"25679300.9ec8da8.1c1c1b4ec03544d88e1077080fb80
 
         } else {
             complete(nil, error);
+        }
+    }] resume];
+}
+
++ (void)getInstagramRecentPostsCount:(NSString *)hashtag withCompletion:(void(^)(int postsPerHour, NSError *error))complete
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?access_token=%@", [hashtag lowercaseString], kAccessToken]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+
+        if (!error) {
+            NSError *jsonError = nil;
+            NSDictionary *resultsDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+
+            if (!jsonError) {
+                NSArray *resultsArray = resultsDictionary[@"data"];
+
+                int recentPostCount = 0;
+
+                for (NSDictionary *dict in resultsArray) {
+                    NSNumber *postDateInSeconds = dict[@"created_time"];
+
+                    NSTimeInterval postTimeInterval = [postDateInSeconds doubleValue];
+
+                    NSTimeInterval todayTimeInterval = [[NSDate date] timeIntervalSince1970];
+
+                    NSTimeInterval timeDiff = todayTimeInterval - postTimeInterval;
+
+                    if (timeDiff <= 600) {
+                        recentPostCount++;
+                    }
+                }
+
+                int postsPerHour = recentPostCount * 6;
+
+                complete(postsPerHour, nil);
+            } else {
+                complete(0, error);
+            }
+
+        } else {
+            complete(0, error);
         }
     }] resume];
 }
