@@ -260,9 +260,9 @@
         favorite.user = [PFUser currentUser];
         [favorite saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                NSLog(@"Page to favorite");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.favoriteStar setImage:[UIImage imageNamed:@"colorStar"]];
+                    [self favoriteEventAlertWithMessage:@"Event added to Favorites"];
                 });
             }
         }];
@@ -273,6 +273,7 @@
                 [object delete];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.favoriteStar setImage:[UIImage imageNamed:@"star"]];
+                    [self favoriteEventAlertWithMessage:@"Event removed from Favorites"];
                 });
             }
         }];
@@ -285,6 +286,14 @@
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
     [SVProgressHUD setForegroundColor:[UIColor blueColor]];
     [SVProgressHUD show];
+}
+
+- (void)favoriteEventAlertWithMessage:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)urlRedirectAlertTo:(NSURL *)url
