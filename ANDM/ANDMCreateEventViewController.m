@@ -127,32 +127,42 @@
     page.endDate = self.endEventDate;
     page.address = self.locationTextField.text;
 
+    // TODO: fix later..
+    page.postsHr = 800;
+
     __block double latitude = 0;
     __block double longitude = 0;
 
-    __weak typeof(self) weakSelf = self;
-
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:self.locationTextField.text completionHandler:^(NSArray* placemarks, NSError* error){
-        for (CLPlacemark* aPlacemark in placemarks)
-        {
-            // Process the placemark.
-            latitude = aPlacemark.location.coordinate.latitude;
-            longitude = aPlacemark.location.coordinate.longitude;
 
-            if (latitude != 0 && longitude != 0) {
-                PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
-                page.location = geoPoint;
+    if (self.eventTextField.text.length > 0 && self.startTimeTextField.text.length > 0 && self.endTimeTextField.text.length > 0 && self.locationTextField.text.length > 0 && self.hashtagTextField.text.length > 0 && self.eventImageView.image != nil) {
 
-                //TODO: fix this later...
-                if ([weakSelf.eventTextField.text length] > 0) {
-                    [page saveInBackground];
+        [geocoder geocodeAddressString:self.locationTextField.text completionHandler:^(NSArray* placemarks, NSError* error){
+            for (CLPlacemark* aPlacemark in placemarks)
+            {
+                latitude = aPlacemark.location.coordinate.latitude;
+                longitude = aPlacemark.location.coordinate.longitude;
+
+                if (latitude != 0 && longitude != 0) {
+                    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
+                    page.location = geoPoint;
+
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New Event" message:@"Are you sure you want to create this event?" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [page saveInBackground];
+                        [self.navigationController pushViewController:self.mainFeedVC animated:YES];
+                    }];
+                    UIAlertAction *noButton = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:nil];
+                    [alert addAction:yesButton];
+                    [alert addAction:noButton];
+                    [self presentViewController:alert animated:YES completion:nil];
                 }
             }
-        }
-    }];
+        }];
+    } else {
+        [self errorAlertWithMessage:@"You need to fill out all fields"];
+    }
 
-    [self.navigationController pushViewController:self.mainFeedVC animated:YES];
 }
 
 - (IBAction)onAddImage:(UIButton *)sender
@@ -250,6 +260,15 @@
         }
     }
     return YES;
+}
+
+#pragma mark - Helpers
+- (void)errorAlertWithMessage:(NSString *)message
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okButton];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 //TODO: need to implement this later
