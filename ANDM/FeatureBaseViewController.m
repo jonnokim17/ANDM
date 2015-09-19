@@ -125,6 +125,7 @@
 - (PFQuery *)queryForTable
 {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query orderByDescending:@"postsHr"];
 
     return query;
 }
@@ -296,6 +297,13 @@
 
     NSDate *eventDate = page.date;
     cell.dateUntilNowLabel.text = [eventDate dateTimeUntilNow];
+
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM-dd-yyyy hh:mm a"];
+    NSString *startDate = [dateFormat stringFromDate:page.date];
+    NSString *endDate = [dateFormat stringFromDate:page.endDate];
+
+    cell.eventDurationLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
 }
 
 #pragma mark - ANDMViewControllerDelegate

@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hashtagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateUntilNowLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventDurationLabel;
 
 @end

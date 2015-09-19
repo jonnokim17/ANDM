@@ -17,6 +17,7 @@
 @dynamic location;
 @dynamic pageName;
 @dynamic image;
+@dynamic postsHr;
 
 + (void)load
 {

@@ -52,8 +52,11 @@
 
                 if (!error) {
                     self.instagramPostsPerHour = postsPerHour;
+                    int postsHr = self.twitterPostsPerHour + self.instagramPostsPerHour;
+                    self.selectedPage.postsHr = postsHr;
+                    [self.selectedPage saveInBackground];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        self.postsPerHourLabel.text = [NSString stringWithFormat:@"%d Posts/Hr", self.twitterPostsPerHour + self.instagramPostsPerHour];
+                        self.postsPerHourLabel.text = [NSString stringWithFormat:@"%d Posts/Hr", postsHr];
                     });
                 } else {
                     NSLog(@"%@", error.description);
@@ -243,11 +246,11 @@
 }
 
 #pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    InstagramData *selectedInstagram = self.instagramData[indexPath.row];
-    [self urlRedirectAlertTo:selectedInstagram.instagramURL];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    InstagramData *selectedInstagram = self.instagramData[indexPath.row];
+//    [self urlRedirectAlertTo:selectedInstagram.instagramURL];
+//}
 
 - (IBAction)onFavoriteStar:(UITapGestureRecognizer *)sender
 {

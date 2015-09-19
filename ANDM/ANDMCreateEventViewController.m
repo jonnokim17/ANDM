@@ -98,8 +98,7 @@
     UIDatePicker *picker = (UIDatePicker*)self.endTimeTextField.inputView;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM-dd-yyyy hh:mm a"];
-    self.endTimeTextField.text = [dateFormat stringFromDate:picker.date];
-    self.endEventDate = picker.date;
+    self.endTimeTextField.text = [dateFormat stringFromDate:picker.date];    self.endEventDate = picker.date;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -236,6 +235,21 @@
     self.eventImageView.image = self.selectedEventImage;
 
     [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    if (textField == self.hashtagTextField) {
+        NSString *resultingString = [textField.text stringByReplacingCharactersInRange: range withString: string];
+        NSCharacterSet *whitespaceSet = [NSCharacterSet whitespaceCharacterSet];
+        if ([resultingString rangeOfCharacterFromSet:whitespaceSet].location == NSNotFound) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 //TODO: need to implement this later
