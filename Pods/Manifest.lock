@@ -15,7 +15,7 @@ PODS:
     - AFNetworking/NSURLSession (~> 2.5.0)
   - Bolts/Tasks (1.2.2)
   - NSDate+TimeAgo (1.0.3)
-  - Parse (1.8.3):
+  - Parse (1.8.5):
     - Bolts/Tasks (>= 1.2.2)
   - ParseUI (1.1.6):
     - Bolts/Tasks (~> 1.2)
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
   Bolts: 20a2bd788273360cb1e31530dc19b8544eef2544
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
-  Parse: 4b251ac63b76d12b334a32579cc3b174446f0c39
+  Parse: 17ad8e0677ed682f7f00503860fcda0f4eb74168
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
