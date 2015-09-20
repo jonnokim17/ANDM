@@ -194,13 +194,13 @@
         //Create the log in view controller
         ANDMLoginViewController *logInViewController = [[ANDMLoginViewController alloc] init];
         [logInViewController setDelegate:self];
-        [logInViewController setFields:PFLogInFieldsDefault];
-
+        [logInViewController.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ANDM_login"]]];
 
         //Create the sign up view controller
         ANDMSignUpViewController *signUpViewController = [[ANDMSignUpViewController alloc] init];
         [signUpViewController setDelegate:self];
         [signUpViewController setFields:PFSignUpFieldsDefault];
+        [signUpViewController.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ANDM_login"]]];
 
         //Assign our sign up controller to be displayed from the login controller
         [logInViewController setSignUpController:signUpViewController];
