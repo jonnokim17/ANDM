@@ -263,7 +263,6 @@
             if (succeeded) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.favoriteStar setImage:[UIImage imageNamed:@"colorStar"]];
-                    [self favoriteEventAlertWithMessage:@"Event added to Favorites"];
                 });
             }
         }];
@@ -274,7 +273,6 @@
                 [object delete];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.favoriteStar setImage:[UIImage imageNamed:@"star"]];
-                    [self favoriteEventAlertWithMessage:@"Event removed from Favorites"];
                 });
             }
         }];
