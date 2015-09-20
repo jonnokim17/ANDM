@@ -16,8 +16,8 @@
 
 @interface ANDMDetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *eventDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *eventImageView;
-@property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hashtagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -41,7 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"ANDM";
+    self.navigationItem.title = self.selectedPage.pageName;
 
     [TwitterData getTwitterRecentPostsCount:self.selectedPage.hashtag withCompletion:^(int postsPerHour, NSError *error) {
 
@@ -95,7 +95,8 @@
         }
     }];
 
-    self.eventTitleLabel.text = self.selectedPage.pageName;
+    self.eventDescription.text = self.selectedPage.about;
+
     NSString *hashtag = self.selectedPage.hashtag;
     NSMutableString *hashtagString = [NSMutableString stringWithString:hashtag];
     [hashtagString insertString:@"#" atIndex:0];

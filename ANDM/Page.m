@@ -18,6 +18,7 @@
 @dynamic pageName;
 @dynamic image;
 @dynamic postsHr;
+@dynamic about;
 
 + (void)load
 {

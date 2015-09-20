@@ -15,6 +15,7 @@
 @interface ANDMCreateEventViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *eventTextField;
+@property (weak, nonatomic) IBOutlet UITextField *eventDescriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *startTimeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *endTimeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
@@ -126,6 +127,7 @@
     page.date = self.startEventDate;
     page.endDate = self.endEventDate;
     page.address = self.locationTextField.text;
+    page.about = self.eventDescriptionTextField.text;
 
     // TODO: fix later..
     page.postsHr = 800;
@@ -135,7 +137,7 @@
 
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 
-    if (self.eventTextField.text.length > 0 && self.startTimeTextField.text.length > 0 && self.endTimeTextField.text.length > 0 && self.locationTextField.text.length > 0 && self.hashtagTextField.text.length > 0 && self.eventImageView.image != nil) {
+    if (self.eventTextField.text.length > 0 && self.eventDescriptionTextField.text.length > 0 && self.startTimeTextField.text.length > 0 && self.endTimeTextField.text.length > 0 && self.locationTextField.text.length > 0 && self.hashtagTextField.text.length > 0 && self.eventImageView.image != nil) {
 
         [geocoder geocodeAddressString:self.locationTextField.text completionHandler:^(NSArray* placemarks, NSError* error){
             for (CLPlacemark* aPlacemark in placemarks)

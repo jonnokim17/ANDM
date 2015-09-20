@@ -21,6 +21,7 @@ typedef void(^getPagesBlock)(NSArray *objects, NSError *error);
 @property (nonatomic, strong) NSString *pageName;
 @property (nonatomic, strong) PFFile *image;
 @property (nonatomic) int postsHr;
+@property (nonatomic, strong) NSString *about;
 
 + (void)getPagesWithObjectIds:(NSArray *)objectIds andCompletion:(getPagesBlock)completion;
 
